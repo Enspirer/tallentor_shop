@@ -105,6 +105,8 @@
                 @endif
 
             </div>
+
+            @include('frontend.partials.home_page_features')
         </div>
     </div>
 
