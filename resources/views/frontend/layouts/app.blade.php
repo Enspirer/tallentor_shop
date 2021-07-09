@@ -58,6 +58,8 @@
     <link rel="stylesheet" href="{{ static_asset('assets/css/aiz-core.css') }}">
     <link rel="stylesheet" href="{{ static_asset('assets/css/custom-style.css') }}">
 
+    <link rel="stylesheet" href="{{ static_asset('assets/css/imzframe.css') }}">
+
 
     <script>
         var AIZ = AIZ || {};
