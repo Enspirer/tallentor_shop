@@ -46,7 +46,7 @@
                         <div class="col-md-8">
                             <select class="form-control aiz-selectpicker" name="brand_id" id="brand_id"
                                 data-live-search="true">
-                                <option value="">{{ translate('Select Brand') }}</option>
+                                <option value="">{{ translate('Select Publisher') }}</option>
                                 @foreach (\App\Brand::all() as $brand)
                                 <option value="{{ $brand->id }}">{{ $brand->getTranslation('name') }}</option>
                                 @endforeach

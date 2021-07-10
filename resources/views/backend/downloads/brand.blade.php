@@ -78,7 +78,7 @@
 		<table class="padding text-left small border-bottom">
 			<thead>
                 <tr class="gry-color" style="background: #eceff4;">
-                    <th width="50%">{{translate('Brand Name') }}</th>
+                    <th width="50%">{{translate('Publisher Name') }}</th>
                     <th width="50%">{{translate('ID') }}</th>
                 </tr>
 			</thead>

@@ -4,7 +4,7 @@
 
 <div class="aiz-titlebar text-left mt-2 mb-3">
 	<div class="align-items-center">
-			<h1 class="h3">{{translate('All Brands')}}</h1>
+			<h1 class="h3">{{translate('All Publisher')}}</h1>
 	</div>
 </div>
 
@@ -39,7 +39,7 @@
 		                        <td>{{ ($key+1) + ($brands->currentPage() - 1)*$brands->perPage() }}</td>
 		                        <td>{{ $brand->getTranslation('name') }}</td>
 														<td>
-		                            <img src="{{ uploaded_asset($brand->logo) }}" alt="{{translate('Brand')}}" class="h-50px">
+		                            <img src="{{ uploaded_asset($brand->logo) }}" alt="{{translate('Publisher')}}" class="h-50px">
 		                        </td>
 		                        <td class="text-right">
 		                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('brands.edit', ['id'=>$brand->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">

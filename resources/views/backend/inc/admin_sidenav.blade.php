@@ -105,7 +105,7 @@
                             </li>
                             <li class="aiz-side-nav-item">
                                 <a href="{{route('brands.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['brands.index', 'brands.create', 'brands.edit'])}}" >
-                                    <span class="aiz-side-nav-text">{{translate('Brand')}}</span>
+                                    <span class="aiz-side-nav-text">{{translate('Publisher')}}</span>
                                 </a>
                             </li>
                             <li class="aiz-side-nav-item">
