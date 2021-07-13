@@ -1,5 +1,5 @@
 <div class="aiz-category-menu bg-white rounded @if(Route::currentRouteName() == 'home') shadow-sm" @else shadow-lg" id="category-sidebar" @endif>
-    <div class="p-3 bg-soft-primary d-none d-lg-block rounded-top all-category position-relative text-left">
+    <div class="p-3 bg-soft-primary d-none d-lg-block rounded-top all-category position-relative text-left" style="color: white;background: #dc1e34 !important;">
         <span class="fw-600 fs-16 mr-3">{{ translate('Categories') }}</span>
         <a href="{{ route('categories.all') }}" class="text-reset">
             <span class="d-none d-lg-inline-block">{{ translate('See All') }} ></span>

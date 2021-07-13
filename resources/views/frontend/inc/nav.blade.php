@@ -9,11 +9,11 @@
 </div>
 @endif
 <!-- Top Bar -->
-<div class="top-navbar bg-white border-bottom border-soft-secondary z-1035" style="background: #dc1e34 !important;color: white !important;">
+<div class="top-navbar bg-white border-bottom border-soft-secondary z-1035" style="background: #529342 !important;color: white !important;">
     <div class="container">
         <div class="row">
             <div class="col-lg-7 col">
-                <ul class="list-inline d-flex justify-content-between justify-content-lg-start mb-0">
+                <ul class="list-inline d-flex justify-content-between justify-content-lg-start mb-0" style="padding-top: 8px;">
                     @if(get_setting('show_language_switcher') == 'on')
                     <li class="list-inline-item dropdown mr-3" id="lang-change">
                         @php
@@ -106,7 +106,7 @@
                             $header_logo = get_setting('header_logo');
                         @endphp
                         @if($header_logo != null)
-                            <img src="{{ uploaded_asset($header_logo) }}" alt="{{ env('APP_NAME') }}" class="mw-100 h-30px h-md-40px" height="40">
+                            <img src="{{ uploaded_asset($header_logo) }}" alt="{{ env('APP_NAME') }}" class="mw-100 h-30px h-md-40px" height="40" style="height: 80px;">
                         @else
                             <img src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" class="mw-100 h-30px h-md-40px" height="40">
                         @endif
@@ -200,7 +200,7 @@
         @endif
     </div>
     @if ( get_setting('header_menu_labels') !=  null )
-        <div class="bg-white border-top border-gray-200 py-1" style="background: #529342 !important;color: white !important;">
+        <div class="bg-white border-top border-gray-200 py-1" style="background: #dc1e34 !important;color: white !important;">
             <div class="container">
                 <ul class="list-inline mb-0 pl-0 mobile-hor-swipe text-center">
                     @foreach (json_decode( get_setting('header_menu_labels'), true) as $key => $value)
