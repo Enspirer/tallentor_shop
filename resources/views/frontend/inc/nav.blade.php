@@ -9,7 +9,7 @@
 </div>
 @endif
 <!-- Top Bar -->
-<div class="top-navbar bg-white border-bottom border-soft-secondary z-1035" style="background: #529342 !important;color: white !important;">
+<div class="top-navbar bg-white border-bottom border-soft-secondary z-1035" style="background: #ebedf2 !important;color: #080808 !important;">
     <div class="container">
         <div class="row">
             <div class="col-lg-7 col">
@@ -82,7 +82,7 @@
                             <a href="{{ route('logout') }}" class="text-reset py-2 d-inline-block opacity-60">{{ translate('Logout')}}</a>
                         </li>
                     @else
-                        <li class="list-inline-item mr-3" style="padding-left: 25px;padding-right: 25px;background-color: green;border-radius: 16px;margin-top: 7px;margin-bottom: 7px;">
+                        <li class="list-inline-item mr-3" style="padding-left: 25px;padding-right: 25px;background-color: white;border-radius: 16px;margin-top: 7px;margin-bottom: 7px;">
                             <a href="{{ route('user.login') }}" class="text-reset py-2 d-inline-block opacity-60">{{ translate('Login')}}</a>
                         </li>
                         <li class="list-inline-item">
