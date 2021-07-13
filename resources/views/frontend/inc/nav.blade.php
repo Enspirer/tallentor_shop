@@ -9,7 +9,7 @@
 </div>
 @endif
 <!-- Top Bar -->
-<div class="top-navbar bg-white border-bottom border-soft-secondary z-1035">
+<div class="top-navbar bg-white border-bottom border-soft-secondary z-1035" style="background: #dc1e34 !important;color: white !important;">
     <div class="container">
         <div class="row">
             <div class="col-lg-7 col">
@@ -82,7 +82,7 @@
                             <a href="{{ route('logout') }}" class="text-reset py-2 d-inline-block opacity-60">{{ translate('Logout')}}</a>
                         </li>
                     @else
-                        <li class="list-inline-item mr-3">
+                        <li class="list-inline-item mr-3" style="padding-left: 25px;padding-right: 25px;background-color: green;border-radius: 16px;margin-top: 7px;margin-bottom: 7px;">
                             <a href="{{ route('user.login') }}" class="text-reset py-2 d-inline-block opacity-60">{{ translate('Login')}}</a>
                         </li>
                         <li class="list-inline-item">
@@ -200,7 +200,7 @@
         @endif
     </div>
     @if ( get_setting('header_menu_labels') !=  null )
-        <div class="bg-white border-top border-gray-200 py-1">
+        <div class="bg-white border-top border-gray-200 py-1" style="background: #529342 !important;color: white !important;">
             <div class="container">
                 <ul class="list-inline mb-0 pl-0 mobile-hor-swipe text-center">
                     @foreach (json_decode( get_setting('header_menu_labels'), true) as $key => $value)
