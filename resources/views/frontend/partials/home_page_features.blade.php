@@ -9,7 +9,7 @@
                     <div class="card-body" style="text-align: center">
                     <h5> {{ translate('Shop by Store') }}</h5><br>
                         <figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0" style="--primary-color: #000000;--secondary-color: #000000;--text-color: #f0f0f0;--border-color: #ffffff;--image-opacity: 60%;width: 380px;">
-                            <img src="{{url('imgs/1.png')}}" alt="Sample Image">
+                            <img src="{{url('imgs/1.jpg')}}" alt="Sample Image">
                             <figcaption class="c4-layout-top-left">
                                 <div class="c4-reveal-down">
                                     <div>
@@ -29,7 +29,7 @@
                     <div class="card-body" style="text-align: center">
                         <h5>{{ translate('Shop by Category') }}</h5><br>
                         <figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0" style="--primary-color: #000000;--secondary-color: #000000;--text-color: #f0f0f0;--border-color: #ffffff;--image-opacity: 60%;width: 380px;">
-                            <img src="{{url('imgs/2.png')}}" alt="Sample Image">
+                            <img src="{{url('imgs/2.jpg')}}" alt="Sample Image">
                             <figcaption class="c4-layout-top-left">
                                 <div class="c4-reveal-down">
                                     <div>
@@ -50,7 +50,7 @@
                     <div class="card-body" style="text-align: center">
                         <h5> {{ translate('Ask the Book Finder') }}</h5><br>
                         <figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0" style="--primary-color: #000000;--secondary-color: #000000;--text-color: #f0f0f0;--border-color: #ffffff;--image-opacity: 60%;width: 380px;">
-                            <img src="{{url('imgs/3.png')}}" alt="Sample Image">
+                            <img src="{{url('imgs/3.jpg')}}" alt="Sample Image">
                             <figcaption class="c4-layout-top-left">
                                 <div class="c4-reveal-down">
                                     <div>
@@ -71,7 +71,7 @@
                     <div class="card-body" style="text-align: center">
                         <h5>{{ translate('Visit the Book Fair') }}</h5><br>
                         <figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0" style="--primary-color: #000000;--secondary-color: #000000;--text-color: #f0f0f0;--border-color: #ffffff;--image-opacity: 60%;width: 380px;">
-                            <img src="{{url('imgs/4.png')}}" alt="Sample Image">
+                            <img src="{{url('imgs/4.jpg')}}" alt="Sample Image">
                             <figcaption class="c4-layout-top-left">
                                 <div class="c4-reveal-down">
                                     <div>
@@ -91,7 +91,7 @@
                     <div class="card-body" style="text-align: center">
                         <h5>{{ translate('Stationary Corner') }}</h5><br>
                         <figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0" style="--primary-color: #000000;--secondary-color: #000000;--text-color: #f0f0f0;--border-color: #ffffff;--image-opacity: 60%;width: 380px;">
-                            <img src="{{url('imgs/5.png')}}" alt="Sample Image">
+                            <img src="{{url('imgs/5.jpg')}}" alt="Sample Image">
                             <figcaption class="c4-layout-top-left">
                                 <div class="c4-reveal-down">
                                     <div>
@@ -111,7 +111,7 @@
                     <div class="card-body" style="text-align: center">
                         <h5>{{ translate('Gift Cards') }}</h5><br>
                         <figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0" style="--primary-color: #000000;--secondary-color: #000000;--text-color: #f0f0f0;--border-color: #ffffff;--image-opacity: 60%;width: 380px;">
-                            <img src="{{url('imgs/6.png')}}" alt="Sample Image">
+                            <img src="{{url('imgs/6.jpg')}}" alt="Sample Image">
                             <figcaption class="c4-layout-top-left">
                                 <div class="c4-reveal-down">
                                     <div>
