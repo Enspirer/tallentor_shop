@@ -18,7 +18,7 @@
 <div class="card">
 	<div class="card-header row gutters-5">
 		<div class="col text-center text-md-left">
-			<h5 class="mb-md-0 h6">{{ translate('Brands') }}</h5>
+			<h5 class="mb-md-0 h6">{{ translate('Publisher') }}</h5>
 		</div>
 		<div class="col-md-4">
 			<form class="" id="sort_pickup_points" action="" method="GET">

@@ -9,7 +9,7 @@
                     <div class="card-body" style="text-align: center">
                     <h5> {{ translate('Shop by Store') }}</h5><br>
                         <figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0" style="--primary-color: #000000;--secondary-color: #000000;--text-color: #f0f0f0;--border-color: #ffffff;--image-opacity: 60%;width: 380px;">
-                            <img src="https://dummyimage.com/600x400/c5c5c5/00000" alt="Sample Image">
+                            <img src="https://dummyimage.com/600x400/c5c5c5/00000php " alt="Sample Image">
                             <figcaption class="c4-layout-top-left">
                                 <div class="c4-reveal-down">
                                     <div>

@@ -238,7 +238,7 @@
                                     </h1>
                                 </div>
                                 <div class="form-group ml-auto mr-0 w-200px d-none d-xl-block">
-                                    <label class="mb-0 opacity-50">{{ translate('Brands')}}</label>
+                                    <label class="mb-0 opacity-50">{{ translate('Publisher')}}</label>
                                     <select class="form-control form-control-sm aiz-selectpicker" data-live-search="true" name="brand" onchange="filter()">
                                         <option value="">{{ translate('All Brands')}}</option>
                                         @foreach (\App\Brand::all() as $brand)

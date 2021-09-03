@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="form-group row" id="brand">
-                        <label class="col-md-3 col-from-label">{{translate('Brand')}}</label>
+                        <label class="col-md-3 col-from-label">{{translate('Publisher')}}</label>
                         <div class="col-md-8">
                             <select class="form-control aiz-selectpicker" name="brand_id" id="brand_id"
                                 data-live-search="true">

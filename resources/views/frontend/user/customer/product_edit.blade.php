@@ -50,7 +50,7 @@
                 <div class="form-group row">
                     <label class="col-md-2 col-from-label">{{translate('Book Publisher')}} <span class="text-danger">*</span></label>
                     <div class="col-md-10">
-                        <select class="form-control selectpicker" data-placeholder="{{ translate('Select a brand')}}" data-live-search="true"  id="brands" name="brand_id">
+                        <select class="form-control selectpicker" data-placeholder="{{ translate('Select a publisher')}}" data-live-search="true"  id="brands" name="brand_id">
                             <option value=""></option>
                             @foreach (\App\Brand::all() as $brand)
                                 <option value="{{ $brand->id }}" @if($brand->id == $product->brand_id) selected @endif>{{ $brand->getTranslation('name') }}</option>
