@@ -27,6 +27,20 @@
                                 placeholder="{{ translate('Product Name') }}" onchange="update_sku()" required>
                         </div>
                     </div>
+
+                    {{--Author Function--}}
+                    <div class="form-group row" id="brand">
+                        <label class="col-md-3 col-from-label">{{translate('Author')}}</label>
+                        <div class="col-md-8">
+                            <select class="form-control aiz-selectpicker" name="author_id" data-live-search="true">
+                                <option value="">{{ translate('Select Author') }}</option>
+                                @foreach (\App\Models\Author::all() as $authors)
+                                    <option value="{{ $brand->id }}">{{ $authors->getTranslation('name') }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group row" id="category">
                         <label class="col-md-3 col-from-label">{{translate('Category')}}</label>
                         <div class="col-md-8">

@@ -359,6 +359,30 @@
                 </li>
 
             </ul>
+
+            @if(Auth::user()->is_author == 1)
+                <hr>
+                <h4 class="h5 fw-600 text-center">{{ translate('Author Section')}}</h4>
+
+                <ul class="aiz-side-nav-list" data-toggle="aiz-side-menu">
+
+                    <li class="aiz-side-nav-item">
+                        <a href="{{ route('dashboard') }}" class="aiz-side-nav-link {{ areActiveRoutes(['dashboard'])}}">
+                            <i class="las la-home aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">{{ translate('Edit My Desc') }}</span>
+                        </a>
+                    </li>
+                </ul>
+            @else
+                <div>
+                    <a href="{{route('author_create')}}" class="btn btn-block btn-soft-primary rounded-0">
+                        </i>{{ translate('Be a Author') }}
+                    </a>
+                </div>
+
+            @endif
+
+
         </div>
         @if (get_setting('vendor_system_activation') == 1 && Auth::user()->user_type == 'customer')
             <div>
@@ -424,6 +448,9 @@
             </table>
         </div>
         @endif
+
+
+
 
     </div>
 </div>
