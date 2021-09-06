@@ -155,6 +155,8 @@ Route::get('/privacypolicy', 'HomeController@privacypolicy')->name('privacypolic
 
 Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
     Route::get('/author-create','AuthorController@create_author')->name('author_create');
+    Route::post('/author-create','AuthorController@store_author')->name('author.store');
+
     Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
     Route::get('/profile', 'HomeController@profile')->name('profile');
     Route::post('/new-user-verification', 'HomeController@new_verify')->name('user.new.verify');
