@@ -35,7 +35,7 @@
                             <select class="form-control aiz-selectpicker" name="author_id" data-live-search="true">
                                 <option value="">{{ translate('Select Author') }}</option>
                                 @foreach (\App\Models\Author::all() as $authors)
-                                    <option value="{{ $brand->id }}">{{ $authors->getTranslation('name') }}</option>
+                                    <option value="{{ $authors->id }}">{{ $authors->getTranslation('name') }}</option>
                                 @endforeach
                             </select>
                         </div>
