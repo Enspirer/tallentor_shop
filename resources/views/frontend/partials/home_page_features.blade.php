@@ -91,14 +91,14 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body" style="text-align: center">
-                        <h5>{{ translate('Stationary Corner') }}</h5><br>
+                        <h5>{{ translate('Pre Loved Book') }}</h5><br>
                         <figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0" style="--primary-color: #000000;--secondary-color: #000000;--text-color: #f0f0f0;--border-color: #ffffff;--image-opacity: 60%;width: 100%;">
-                            <img src="{{url('tag/StationaryCorner.jpg')}}" alt="Sample Image">
+                            <img src="{{url('tag/bookpanel.jpg')}}" alt="Sample Image">
                             <figcaption class="c4-layout-top-left">
                                 <div class="c4-reveal-down">
                                     <div>
                                         <h2 style="margin-bottom: 5px;">
-                                            {{ translate('Stationary Corner') }}
+                                            {{ translate('Pre Loved Book') }}
                                         </h2>
                                         <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
                                     </div>
@@ -136,17 +136,39 @@
 <div class="row">
     <div class="col-md-6">
         <div class="card">
-            <div class="card-body">
-                <div style="background-image: url('{{url('tag/GiftCards.jpg')}}');height: 300px;background-position: center;background-repeat: no-repeat;background-size: cover"></div>
-
+            <div class="card-body" style="text-align: center">
+                <figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0" style="--primary-color: #000000;--secondary-color: #000000;--text-color: #f0f0f0;--border-color: #ffffff;--image-opacity: 60%;width: 100%;">
+                    <img src="{{url('tag/bs_store.jpg')}}" alt="Sample Image">
+                    <figcaption class="c4-layout-top-left">
+                        <div class="c4-reveal-down">
+                            <div>
+                                <h2 style="margin-bottom: 5px;">
+                                    {{ translate('BS Store') }}
+                                </h2>
+                                <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
+                            </div>
+                        </div>
+                    </figcaption>
+                </figure><br>
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="card">
-            <div class="card-body">
-                <div style="background-image: url('{{url('tag/GiftCards.jpg')}}');height: 300px;background-position: center;background-repeat: no-repeat;background-size: cover"></div>
-
+            <div class="card-body" style="text-align: center">
+                <figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0" style="--primary-color: #000000;--secondary-color: #000000;--text-color: #f0f0f0;--border-color: #ffffff;--image-opacity: 60%;width: 100%;">
+                    <img src="{{url('tag/statony.jpg')}}" alt="Sample Image">
+                    <figcaption class="c4-layout-top-left">
+                        <div class="c4-reveal-down">
+                            <div>
+                                <h2 style="margin-bottom: 5px;">
+                                    {{ translate('Stationary Items') }}
+                                </h2>
+                                <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
+                            </div>
+                        </div>
+                    </figcaption>
+                </figure><br>
             </div>
         </div>
     </div>
