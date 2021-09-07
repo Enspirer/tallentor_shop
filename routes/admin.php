@@ -20,7 +20,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     //Update Routes
 
     Route::get('/author', 'AuthorBackendController@index')->name('admin.author');
-
+    Route::get('/author/destroy/{id}', 'AuthorBackendController@destroy')->name('author.destroy');
+    Route::get('/author/admin/edit/{id}', 'AuthorBackendController@edit')->name('author.edit');
+    Route::post('/author/update/{id}', 'AuthorBackendController@update')->name('author.update');
 
 
     Route::resource('categories', 'CategoryController');
