@@ -64,4 +64,8 @@ class AuthorController extends Controller
     {
         return view('frontend.user.author.my_bookings');
     }
+
+    public function author_page() {
+        return view('frontend.author_page');
+    }
 }
