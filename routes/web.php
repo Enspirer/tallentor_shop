@@ -345,3 +345,6 @@ Route::get('/mobile-page/{slug}', 'PageController@mobile_custom_page')->name('mo
 
 //Custom page
 Route::get('/{slug}', 'PageController@show_custom_page')->name('custom-pages.show_custom_page');
+
+//Author Section
+Route::post('/author/update/{id}', 'AuthorBackendController@update')->name('author.update');
