@@ -163,7 +163,6 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
 
     
 
-
     Route::get('/author-settings','AuthorController@author_settings')->name('author_settings');
     Route::get('/author-writings','AuthorController@author_writings')->name('author_writings');
     Route::get('/my-books','AuthorController@my_books')->name('my_books');

@@ -14,17 +14,17 @@
                     <img src="{{ url('assets/img/author/profile_image.png') }}" class="position-absolute" alt="" style="top: -7rem;">
                 </div>
 
-                <div class="col-6">
+                <div class="col-7">
                     <h3 class="font-weight-bold mb-0">Aleska Mandalin</h3>
                 </div>
 
                 <div class="col-3">
                     <div class="row align-items-center">
                         <div class="col-8 text-right">
-                            <button class="btn shadow-lg" style="border-radius: 1rem;">468 Followers</button>
+                            <button class="btn shadow-lg bg-white" style="border-radius: 0.8rem;">468 Followers</button>
                         </div>
                         <div class="col-4">
-                        <button class="bi bi-heart-fill border-0 shadow-lg px-3" type="submit" style="border-radius: 1rem; font-size: 1.5rem; display: block; color: #FF6243"></button>
+                        <button class="bi bi-heart-fill border-0 shadow-lg px-3 py-1" style="border-radius: 0.8rem; font-size: 1.5rem; color: #FF6243; background-color: white"></button>
                         </div>
                     </div>
                 </div>
@@ -34,8 +34,8 @@
         <div class="container" style="margin-top: 5rem;">
             <div class="row">
                 <div class="col-3">
-                    <h5>Contact Details</h5>
-                    <hr class="m-0" style="height:2px; border-width:0; width: 7.5rem; background-color:#FF0000">
+                    <h5 class="font-weight-bold">Contact Details</h5>
+                    <hr class="m-0" style="height:2px; border-width:0; width: 8rem; background-color:#FF0000">
 
                     <div class="row align-items-center mt-3 pl-4">
                         <div class="col-2">
@@ -57,10 +57,10 @@
                 </div>
 
                 <div class="col-8">
-                    <h5>Bio</h5>
+                    <h5 class="font-weight-bold">Bio</h5>
                     <hr class="m-0" style="height:2px; border-width:0; width: 5.5rem; background-color:#FF0000">
 
-                    <p class="mt-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere repudiandae molestias est vel aspernatur molestiae officia? Sed velit amet nemo tempora officia nam in, optio consectetur ad totam ex quasi reprehenderit odio neque aliquam, perferendis dolorum rem minima recusandae. Iste harum fugiat asperiores, quisquam animi sequi rem at obcaecati! Alias?</p>
+                    <p class="mt-3" style="text-align:justify;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere repudiandae molestias est vel aspernatur molestiae officia? Sed velit amet nemo tempora officia nam in, optio consectetur ad totam ex quasi reprehenderit odio neque aliquam, perferendis dolorum rem minima recusandae. Iste harum fugiat asperiores, quisquam animi sequi rem at obcaecati! Alias?</p>
                 </div>
             </div>
         </div>
