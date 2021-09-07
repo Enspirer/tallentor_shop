@@ -524,6 +524,12 @@ class ProductController extends Controller
         $product->todays_deal = 0;
         $product->is_quantity_multiplied = 0;
 
+        $product->author_id =$request->author_id;
+        $product->isbn = $request->isbn;
+        $product->pages = $request->pages;
+        $product->realsed_date = $request->realsed_date;
+        $product->binding = $request->binding;
+
 
         if ($refund_request_addon != null && $refund_request_addon->activated == 1) {
             if ($request->refundable != null) {
