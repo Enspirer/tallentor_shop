@@ -16,10 +16,18 @@
             <ul class="aiz-side-nav-list" id="search-menu">
             </ul>
             <ul class="aiz-side-nav-list" id="main-menu" data-toggle="aiz-side-menu">
+
                 <li class="aiz-side-nav-item">
                     <a href="{{route('admin.dashboard')}}" class="aiz-side-nav-link">
                         <i class="las la-home aiz-side-nav-icon"></i>
                         <span class="aiz-side-nav-text">{{translate('Dashboard')}}</span>
+                    </a>
+                </li>
+
+                <li class="aiz-side-nav-item">
+                    <a href="{{route('admin.author')}}" class="aiz-side-nav-link">
+                        <i class="las la-user-circle aiz-side-nav-icon"></i>
+                        <span class="aiz-side-nav-text">{{translate('Author')}}</span>
                     </a>
                 </li>
 
