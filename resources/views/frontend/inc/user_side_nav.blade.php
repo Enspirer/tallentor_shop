@@ -358,6 +358,31 @@
                     </a>
                 </li>
 
+                @if(is_author(auth()->user()->id))
+                    <li class="aiz-side-nav-item">
+                        <a href="{{route('author_settings')}}" class="aiz-side-nav-link  {{ areActiveRoutes(['author_settings'])}}">
+                            <i class="las la-user aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">Author Settings</span>
+                        </a>
+                    </li>
+
+                    <li class="aiz-side-nav-item">
+                        <a href="{{route('author_writings')}}" class="aiz-side-nav-link {{ areActiveRoutes(['author_writings'])}}">
+                            <i class="las la-pen aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">My Writings</span>
+                        </a>
+                    </li>
+
+                    <li class="aiz-side-nav-item">
+                        <a href="{{route('my_books')}}" class="aiz-side-nav-link {{ areActiveRoutes(['my_books'])}}">
+                            <i class="las la-book aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">My Books</span>
+                        </a>
+                    </li>
+                @else
+
+                @endif
+
             </ul>
 
             @if(Auth::user()->is_author == 1)
@@ -374,11 +399,16 @@
                     </li>
                 </ul>
             @else
-                <div>
-                    <a href="{{route('author_create')}}" class="btn btn-block btn-soft-primary rounded-0">
-                        </i>{{ translate('Be a Author') }}
-                    </a>
-                </div>
+                @if(is_author(auth()->user()->id))
+
+                @else
+                    <div>
+                        <a href="{{route('author_create')}}" class="btn btn-block btn-soft-primary rounded-0">
+                            </i>{{ translate('Be a Author') }}
+                        </a>
+                    </div>
+                @endif
+
 
             @endif
 

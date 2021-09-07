@@ -178,8 +178,12 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $refund_request_addon = \App\Addon::where('unique_identifier', 'refund_request')->first();
-
         $product = new Product;
+        $product->author_id =$request->author_id;
+        $product->isbn = $request->isbn;
+        $product->pages = $request->pages;
+        $product->realsed_date = $request->realsed_date;
+        $product->binding = $request->binding;
         $product->name = $request->name;
         $product->added_by = $request->added_by;
         if(Auth::user()->user_type == 'seller'){

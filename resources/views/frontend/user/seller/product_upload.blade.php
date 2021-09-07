@@ -28,6 +28,49 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label class="col-md-3 col-from-label">{{translate('ISBN')}}</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="isbn"
+                                   placeholder="{{ translate('ISBN Number') }}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-from-label">{{translate('Pages')}}</label>
+                        <div class="col-md-8">
+                            <input type="number" class="form-control" name="pages"
+                                   placeholder="{{ translate('Pages') }}"  required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-from-label">{{translate('Released Date')}}</label>
+                        <div class="col-md-8">
+                            <input type="date" class="form-control" name="realsed_date"
+                                   placeholder="{{ translate('Released Date') }}"  required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-from-label">{{translate('Binding')}}</label>
+                        <div class="col-md-8">
+                            <select class="form-control" name="binding">
+                                <option value="Saddle Stitched">Saddle Stitched</option>
+                                <option value="PUR binding">PUR binding</option>
+                                <option value="Hardcover or case binding">Hardcover or case binding</option>
+                                <option value="Singer sewn binding">Singer sewn binding</option>
+                                <option value="Section sewn binding">Section sewn binding</option>
+                                <option value="Coptic stitch binding">Coptic stitch binding</option>
+                                <option value="Wiro, comb or spiral binding">Wiro, comb or spiral binding</option>
+                                <option value="Interscrew binding">Interscrew binding</option>
+                                <option value="Japanese binding">Japanese binding</option>
+                                <option value="Solander boxes and slipcases">Solander boxes and slipcases</option>
+                            </select>
+
+                        </div>
+                    </div>
+
                     {{--Author Function--}}
                     <div class="form-group row" id="brand">
                         <label class="col-md-3 col-from-label">{{translate('Author')}}</label>

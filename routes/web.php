@@ -156,6 +156,14 @@ Route::get('/privacypolicy', 'HomeController@privacypolicy')->name('privacypolic
 Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
     Route::get('/author-create','AuthorController@create_author')->name('author_create');
     Route::post('/author-create','AuthorController@store_author')->name('author.store');
+    Route::post('/author-update','AuthorController@update_author')->name('author.update');
+
+
+    Route::get('/author-settings','AuthorController@author_settings')->name('author_settings');
+    Route::get('/author-writings','AuthorController@author_writings')->name('author_writings');
+    Route::get('/my-books','AuthorController@my_books')->name('my_books');
+
+
 
     Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
     Route::get('/profile', 'HomeController@profile')->name('profile');

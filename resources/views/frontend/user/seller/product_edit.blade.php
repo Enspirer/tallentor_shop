@@ -41,6 +41,67 @@
                                 required>
                         </div>
                     </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-from-label">{{translate('ISBN')}}</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="isbn" value="{{$product->isbn}}"
+                                   placeholder="{{ translate('ISBN Number') }}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-from-label">{{translate('Pages')}}</label>
+                        <div class="col-md-8">
+                            <input type="number" class="form-control" name="pages" value="{{$product->pages}}"
+                                   placeholder="{{ translate('Pages') }}"  required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-from-label">{{translate('Released Date')}}</label>
+                        <div class="col-md-8">
+                            <input type="date" class="form-control" name="realsed_date" value="{{$product->realsed_date}}"
+                                   placeholder="{{ translate('Released Date') }}"  required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-from-label">{{translate('Binding')}}</label>
+                        <div class="col-md-8">
+                            <select class="form-control" name="binding">
+                                <option value="Saddle Stitched" {{$product->binding === "Saddle Stitched" ? "selected" : "" }}>Saddle Stitched</option>
+                                <option value="PUR binding" {{$product->binding === "PUR binding" ? "selected" : "" }}>PUR binding</option>
+                                <option value="Hardcover or case binding" {{$product->binding === "Hardcover or case binding" ? "selected" : "" }}>Hardcover or case binding</option>
+                                <option value="Singer sewn binding" {{$product->binding === "Singer sewn binding" ? "selected" : "" }}>Singer sewn binding</option>
+                                <option value="Section sewn binding"  {{$product->binding === "Section sewn binding" ? "selected" : "" }}>Section sewn binding</option>
+                                <option value="Coptic stitch binding" {{$product->binding === "Coptic stitch binding" ? "selected" : "" }}>Coptic stitch binding</option>
+                                <option value="Wiro, comb or spiral binding"  {{$product->binding === "Wiro, comb or spiral binding" ? "selected" : "" }}>Wiro, comb or spiral binding</option>
+                                <option value="Interscrew binding" {{$product->binding === "Interscrew binding" ? "selected" : "" }}>Interscrew binding</option>
+                                <option value="Japanese binding" {{$product->binding === "Japanese binding" ? "selected" : "" }}>Japanese binding</option>
+                                <option value="Solander boxes and slipcases {{$product->binding === "Solander boxes and slipcases" ? "selected" : "" }}">Solander boxes and slipcases</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    {{--Author Function--}}
+                    <div class="form-group row" id="brand">
+                        <label class="col-md-3 col-from-label">{{translate('Author')}}</label>
+                        <div class="col-md-8">
+                            <select class="form-control aiz-selectpicker" name="author_id" data-live-search="true">
+                                <option value="">{{ translate('Select Author') }}</option>
+                                @foreach (\App\Models\Author::all() as $authors)
+                                    <option value="{{ $authors->id }}">{{ $authors->author_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+
+
+
                     <div class="form-group row" id="category">
                         <label class="col-lg-3 col-from-label">{{translate('Category')}}</label>
                         <div class="col-lg-8">

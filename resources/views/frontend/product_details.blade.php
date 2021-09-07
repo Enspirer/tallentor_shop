@@ -150,6 +150,27 @@
                             </div>
 
                             <hr>
+                            @if($detailedProduct->author_id)
+                            <div class="row no-gutters mt-3">
+                                <div class="col-sm-2">
+                                    <div class="opacity-50 my-2">{{ translate('Author')}}:</div>
+                                </div>
+                                <div class="col-sm-10">
+                                    <div class="fs-20 opacity-60">
+                                        @if(\App\Models\Author::where('id',$detailedProduct->author_id)->first())
+                                                <a href="">{{\App\Models\Author::where('id',$detailedProduct->author_id)->first()->author_name}}</a>
+
+                                        @else
+
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            @else
+
+                            @endif
+
+                            <hr>
 
                             @if(home_price($detailedProduct) != home_discounted_price($detailedProduct))
 
@@ -316,6 +337,8 @@
                                     <div class="col-sm-2">
                                         <div class="opacity-50 my-2">{{ translate('Total Price')}}:</div>
                                     </div>
+
+
                                     <div class="col-sm-10">
                                         <div class="product-price">
                                             <strong id="chosen_price" class="h4 fw-600 text-primary">
@@ -532,6 +555,19 @@
                     <div class="bg-white mb-3 shadow-sm rounded">
                         <div class="nav border-bottom aiz-nav-tabs">
                             <a href="#tab_default_1" data-toggle="tab" class="p-3 fs-16 fw-600 text-reset active show">{{ translate('Description')}}</a>
+
+                            @if($detailedProduct->author_id)
+                                @if(\App\Models\Author::where('id',$detailedProduct->author_id)->first())
+                                    <a href="#tab_default_5" data-toggle="tab" class="p-3 fs-16 fw-600 text-reset">{{ translate('Author Information')}}</a>
+
+                                @else
+
+                                @endif
+                            @else
+
+
+                            @endif
+
                             @if($detailedProduct->video_link != null)
                                 <a href="#tab_default_2" data-toggle="tab" class="p-3 fs-16 fw-600 text-reset">{{ translate('Video')}}</a>
                             @endif
@@ -542,6 +578,18 @@
                         </div>
 
                         <div class="tab-content pt-0">
+                            <div class="tab-pane fade" id="tab_default_5">
+                                @if($detailedProduct->author_id)
+                                    @if(\App\Models\Author::where('id',$detailedProduct->author_id)->first())
+                                        <div class="p-4">
+                                            <h3>{{\App\Models\Author::where('id',$detailedProduct->author_id)->first()->author_name}}</h3>
+                                            <p>{{\App\Models\Author::where('id',$detailedProduct->author_id)->first()->author_description}}</p>
+                                        </div>
+                                    @endif
+                                @endif
+                            </div>
+
+
                             <div class="tab-pane fade active show" id="tab_default_1">
                                 <div class="p-4">
                                     <div class="mw-100 overflow-hidden text-left aiz-editor-data">

@@ -1035,6 +1035,17 @@ if (!function_exists('get_setting')) {
     }
 }
 
+
+if (!function_exists('is_author')) {
+    function is_author($key)
+    {
+        $authorDetails = \App\Models\Author::where('user_id',$key)->first();
+        return $authorDetails;
+    }
+}
+
+
+
 function hex2rgba($color, $opacity = false) {
     return Colorcodeconverter::convertHexToRgba($color, $opacity);
 }
