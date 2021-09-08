@@ -161,12 +161,17 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
     Route::post('/author-create','AuthorController@store_author')->name('author.store');
     Route::post('/author-update','AuthorController@update_author')->name('user.author.update');
 
-    
 
     Route::get('/author-settings','AuthorController@author_settings')->name('author_settings');
     Route::get('/author-writings','AuthorController@author_writings')->name('author_writings');
-    Route::get('/my-books','AuthorController@my_books')->name('my_books');
 
+
+    Route::get('/my-books','AuthorController@my_books')->name('my_books');
+    Route::get('/my-books/create','AuthorController@create')->name('my_books.create');
+    Route::post('/my-books/store', 'AuthorController@store')->name('my_books.store');
+    Route::get('/my-books/edit/{id}', 'AuthorController@edit')->name('my_books.edit');
+    Route::post('/my-books/update/{id}', 'AuthorController@update')->name('my_books.update');
+    Route::get('/my-books/destroy/{id}', 'AuthorController@destroy')->name('my_books.destroy');
 
 
     Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
