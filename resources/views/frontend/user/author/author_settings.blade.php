@@ -21,7 +21,7 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <form class="" action="{{route('author.update')}}" method="POST" enctype="multipart/form-data">
+                <form class="" action="{{route('user.author.update')}}" method="POST" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="form-box-title px-3 py-2">
                         Author Information
