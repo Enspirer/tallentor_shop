@@ -23,7 +23,7 @@ class AuthorController extends Controller
         $author->cover_photo = $request->cover_photo;
         $author->email = $request->email;
         $author->contact_number = $request->phone_number;
-
+        $author->status = 'Approved';
         $author->facebook_link = '';
         $author->twitter_link = '';
         $author->slug = '883Drjjsel';
