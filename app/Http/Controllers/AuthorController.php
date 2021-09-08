@@ -23,7 +23,7 @@ class AuthorController extends Controller
         $author->cover_photo = $request->cover_photo;
         $author->email = $request->email;
         $author->contact_number = $request->phone_number;
-
+        $author->status = 'Approved';
         $author->facebook_link = '';
         $author->twitter_link = '';
         $author->slug = '883Drjjsel';
@@ -63,5 +63,9 @@ class AuthorController extends Controller
     public function my_books()
     {
         return view('frontend.user.author.my_bookings');
+    }
+
+    public function author_page() {
+        return view('frontend.author_page');
     }
 }

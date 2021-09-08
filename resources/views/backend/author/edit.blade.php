@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form id="add_form" class="form-horizontal" action="{{ route('author.update',$author->id) }}" enctype="multipart/form-data" method="POST">
+<form id="add_form" class="form-horizontal" action="{{ route('author.update') }}" enctype="multipart/form-data" method="POST">
 @csrf
     <div class="row">
         <div class="col-lg-8 mx-auto">
