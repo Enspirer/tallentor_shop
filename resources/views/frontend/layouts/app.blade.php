@@ -51,6 +51,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
 
     <!-- CSS Files -->
+    @stack('before-styles')
     <link rel="stylesheet" href="{{ static_asset('assets/css/vendors.css') }}">
     @if(\App\Language::where('code', Session::get('locale', Config::get('app.locale')))->first()->rtl == 1)
     <link rel="stylesheet" href="{{ static_asset('assets/css/bootstrap-rtl.min.css') }}">
@@ -61,7 +62,7 @@
     <link rel="stylesheet" href="{{ static_asset('assets/css/imzframe.css') }}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-
+    @stack('after-styles')
 
     <script>
         var AIZ = AIZ || {};
