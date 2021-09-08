@@ -343,3 +343,4 @@ Route::get('/{slug}', 'PageController@show_custom_page')->name('custom-pages.sho
 
 //Author Section
 Route::post('/author/update/{id}', 'AuthorBackendController@update')->name('author.update');
+Route::post('/author_request/update/{id}', 'AuthorRequestBackendController@update')->name('author_request.update');

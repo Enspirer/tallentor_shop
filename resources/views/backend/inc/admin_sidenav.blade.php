@@ -24,13 +24,6 @@
                     </a>
                 </li>
 
-                <!-- <li class="aiz-side-nav-item">
-                    <a href="{{route('admin.author')}}" class="aiz-side-nav-link">
-                        <i class="las la-user-circle aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">{{translate('Author')}}</span>
-                    </a>
-                </li> -->
-
                 <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
                             <i class="las la-user-circle aiz-side-nav-icon"></i>
@@ -42,7 +35,12 @@
                                 <a href="{{ route('admin.author') }}" class="aiz-side-nav-link">
                                     <span class="aiz-side-nav-text">{{ translate('Author') }}</span>
                                 </a>
-                            </li>                            
+                            </li>  
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('admin.author_request') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{ translate('Author Request') }}</span>
+                                </a>
+                            </li>                           
                         </ul>
                     </li>
 
