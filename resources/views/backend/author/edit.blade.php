@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form id="add_form" class="form-horizontal" action="{{ route('author.update',$author->id) }}" enctype="multipart/form-data" method="POST">
+<form id="add_form" class="form-horizontal" action="{{ route('author.update') }}" enctype="multipart/form-data" method="POST">
 @csrf
     <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -27,18 +27,9 @@
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="col-md-9">
-                                <textarea name="description" rows="6" class="form-control">{{ $author->author_description }}</textarea>
+                                <textarea name="description" rows="6" class="form-control" required>{{ $author->author_description }}</textarea>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label">
-                                {{translate('Slug')}}
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <input type="text" placeholder="{{translate('Slug')}}" id="slug" name="slug" value="{{ $author->slug }}" class="form-control" required>
-                            </div>
-                        </div> 
+                        </div>                        
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label">
                                 {{translate('Contact Number')}}
@@ -56,7 +47,66 @@
                             <div class="col-md-9">
                                 <input type="text" placeholder="{{translate('Email')}}" id="email" name="email" value="{{ $author->email }}" class="form-control" required>
                             </div>
-                        </div>                                       
+                        </div> 
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label">
+                                {{translate('Facebook Link')}}
+                                <!-- <span class="text-danger">*</span> -->
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" id="facebook_link" name="facebook_link" value="{{ $author->facebook_link }}" class="form-control" >
+                            </div>
+                        </div> 
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label">
+                                {{translate('Twitter Link')}}
+                                <!-- <span class="text-danger">*</span> -->
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" id="twitter_link" name="twitter_link" value="{{ $author->twitter_link }}" class="form-control" >
+                            </div>
+                        </div> 
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label">
+                                {{translate('Slug')}}
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="{{translate('Slug')}}" id="slug" name="slug" value="{{ $author->slug }}" class="form-control" required>
+                            </div>
+                        </div>  
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="signinSrEmail">{{translate('Profile Picture')}}
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-8">
+                                <div class="input-group" data-toggle="aizuploader" data-type="image" data-multiple="true">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
+                                    </div>
+                                    <div class="form-control file-amount">{{ translate('Choose File') }}</div>
+                                    <input type="hidden" name="profile_picture" value="{{ $author->profile_picture }}" class="selected-files" required>
+                                </div>
+                                <div class="file-preview box sm">
+                                </div>
+                            </div>
+                        </div>    
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="signinSrEmail">{{translate('Cover Photo')}}
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-8">
+                                <div class="input-group" data-toggle="aizuploader" data-type="image" data-multiple="true">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
+                                    </div>
+                                    <div class="form-control file-amount">{{ translate('Choose File') }}</div>
+                                    <input type="hidden" name="cover_photo" value="{{ $author->cover_photo }}" class="selected-files" required>
+                                </div>
+                                <div class="file-preview box sm">
+                                </div>
+                            </div>
+                        </div>                                  
                         
                         <div class="form-group mb-0 text-right">
                             <button type="submit" class="btn btn-primary">

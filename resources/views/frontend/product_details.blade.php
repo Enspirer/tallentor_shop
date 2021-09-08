@@ -557,7 +557,7 @@
                             <a href="#tab_default_1" data-toggle="tab" class="p-3 fs-16 fw-600 text-reset active show">{{ translate('Description')}}</a>
 
                             @if($detailedProduct->author_id)
-                                @if(\App\Models\Author::where('id',$detailedProduct->author_id)->first())
+                                @if(\App\Models\Author::where('id',$detailedProduct->author_id)->where('status','Approved')->first())
                                     <a href="#tab_default_5" data-toggle="tab" class="p-3 fs-16 fw-600 text-reset">{{ translate('Author Information')}}</a>
 
                                 @else
@@ -580,7 +580,7 @@
                         <div class="tab-content pt-0">
                             <div class="tab-pane fade" id="tab_default_5">
                                 @if($detailedProduct->author_id)
-                                    @if(\App\Models\Author::where('id',$detailedProduct->author_id)->first())
+                                    @if(\App\Models\Author::where('id',$detailedProduct->author_id)->where('status','Approved')->first())
                                         <div class="p-4">
                                             <h3>{{\App\Models\Author::where('id',$detailedProduct->author_id)->first()->author_name}}</h3>
                                             <p>{{\App\Models\Author::where('id',$detailedProduct->author_id)->first()->author_description}}</p>

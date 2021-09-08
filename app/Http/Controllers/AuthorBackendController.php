@@ -4,43 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Author;
-use App\Customer;
-use App\User;
-use App\Order;
 
 class AuthorBackendController extends Controller
 {
     public function index(Request $request)
     {
 
-        // $sort_search = null;
-        $authors = Author::orderBy('created_at', 'desc')->get();
+        $sort_search = null;
+        $authors = Author::orderBy('id', 'desc')->where('status','!=','Pending');
 
-        // dd($authors);
+        if ($request->search != null){
 
-        
-        // $sort_search = null;
-        // $customers = Customer::orderBy('created_at', 'desc');
-        // if ($request->has('search')){
-        //     $sort_search = $request->search;
-        //     $user_ids = User::where('user_type', 'customer')->where(function($user) use ($sort_search){
-        //         $user->where('name', 'like', '%'.$sort_search.'%')->orWhere('email', 'like', '%'.$sort_search.'%');
-        //     })->pluck('id')->toArray();
-        //     $customers = $customers->where(function($customer) use ($user_ids){
-        //         $customer->whereIn('user_id', $user_ids);
-        //     });
-        // }
-        // $customers = $customers->paginate(15);
+            $sort_search = $request->search;
+            $authors = $authors->where('author_name', 'like', '%'.$sort_search.'%')->where('status','!=','Pending');
+        }        
 
-        // return view('backend.author.index',compact('customers', 'sort_search'));
+        $authors = $authors->paginate(15);
 
-        return view('backend.author.index',compact('authors'));
+        return view('backend.author.index',compact('authors','sort_search'));
     }
 
     public function edit($id)
     {
         $author = Author::find($id);
-        // $blog_categories = BlogCategory::all();
         
         return view('backend.author.edit', compact('author'));
     }
@@ -62,20 +48,22 @@ class AuthorBackendController extends Controller
         $add->slug = $request->slug;
         // $add->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->slug));
         $add->contact_number = $request->contact_number;
-        $add->email = $request->email;        
+        $add->email = $request->email; 
         $add->status = $request->status;
+        $add->facebook_link = $request->facebook_link;       
+        $add->twitter_link = $request->twitter_link;
+        $add->profile_picture = $request->profile_picture;
+        $add->cover_photo = $request->cover_photo;
         
         $add->save();
 
-        flash(translate('Author Details has been updated successfully'))->success();
+        flash(translate('Updated successfully'))->success();
         return redirect()->route('admin.author');
-        // return back();
     }
 
     public function destroy($id)
     {
 
-        // dd($id);
         $author = Author::findOrFail($id);
         $author->delete();
 

@@ -159,7 +159,7 @@ Route::get('/author-page','AuthorController@author_page')->name('author_page');
 Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
     Route::get('/author-create','AuthorController@create_author')->name('author_create');
     Route::post('/author-create','AuthorController@store_author')->name('author.store');
-    Route::post('/author-update','AuthorController@update_author')->name('author.update');
+    Route::post('/author-update','AuthorController@update_author')->name('user.author.update');
 
     
 
@@ -347,3 +347,4 @@ Route::get('/{slug}', 'PageController@show_custom_page')->name('custom-pages.sho
 
 //Author Section
 Route::post('/author/update/{id}', 'AuthorBackendController@update')->name('author.update');
+Route::post('/author_request/update/{id}', 'AuthorRequestBackendController@update')->name('author_request.update');
