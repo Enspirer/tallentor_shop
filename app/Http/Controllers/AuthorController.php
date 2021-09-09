@@ -24,13 +24,13 @@ class AuthorController extends Controller
         $author->cover_photo = $request->cover_photo;
         $author->email = $request->email;
         $author->contact_number = $request->phone_number;
-        $author->status = 'Approved';
+        $author->status = 'Pending';
         $author->facebook_link = '';
         $author->twitter_link = '';
         $author->slug = '883Drjjsel';
         $author->save();
         flash(translate('Author has been inserted successfully'))->success();
-        return back();
+        return redirect()->route('dashboard');
     }
 
     public function update_author(Request $request)
