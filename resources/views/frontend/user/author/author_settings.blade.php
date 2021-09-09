@@ -2,11 +2,21 @@
 
 @section('panel_content')
 
+    @if($author_details->status == 'Pending')
+        <div class="row gutters-10 justify-content-center">
+            <div class="col-md-12 mx-auto mb-3">
+                <div class="p-3 rounded mb-3 text-center bg-white shadow-sm hov-shadow-lg has-transition">
+                    <h5 style="color:red;">Waiting for Admin Approval</h5>
+                </div>
+            </div>
+        </div> 
+    @endif
+
     <div class="aiz-user-panel">
         <div class="page-title">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
+                    <h2 class="heading heading-6 text-capitalize strong-600 mb-2">
                         Author Settings
                     </h2>
                 </div>

@@ -23,11 +23,22 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::get('/author/destroy/{id}', 'AuthorBackendController@destroy')->name('author.destroy');
     Route::get('/author/admin/edit/{id}', 'AuthorBackendController@edit')->name('author.edit');
 
+    Route::get('/books/{id}', 'AuthorBackendController@books_index')->name('admin.books');    
+    Route::get('/books/edit/{id}', 'AuthorBackendController@books_edit')->name('books.edit');
+    Route::post('/books/update/{id}', 'AuthorBackendController@books_update')->name('books.update');  
+    Route::get('/books/destroy/{id}', 'AuthorBackendController@books_destroy')->name('books.destroy');
+
     Route::get('/author_request', 'AuthorRequestBackendController@index')->name('admin.author_request');
     Route::get('/author_request/destroy/{id}', 'AuthorRequestBackendController@destroy')->name('author_request.destroy');
     Route::get('/author_request/admin/edit/{id}', 'AuthorRequestBackendController@edit')->name('author_request.edit');
 
 
+    Route::get('/book_finder_request', 'BookFinderRequestController@index')->name('admin.book_finder_request');
+    Route::get('/book_finder_request/destroy/{id}', 'BookFinderRequestController@destroy')->name('book_finder_request.destroy');
+    Route::get('/book_finder_request/admin/edit/{id}', 'BookFinderRequestController@edit')->name('book_finder_request_backend.edit');
+
+
+    
     Route::resource('categories', 'CategoryController');
     Route::get('/categories/edit/{id}', 'CategoryController@edit')->name('categories.edit');
     Route::get('/categories/destroy/{id}', 'CategoryController@destroy')->name('categories.destroy');

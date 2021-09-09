@@ -25,24 +25,39 @@
                 </li>
 
                 <li class="aiz-side-nav-item">
-                        <a href="#" class="aiz-side-nav-link">
-                            <i class="las la-user-circle aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">{{ translate('Author List') }}</span>
-                            <span class="aiz-side-nav-arrow"></span>
-                        </a>
-                        <ul class="aiz-side-nav-list level-2">
-                            <li class="aiz-side-nav-item">
-                                <a href="{{ route('admin.author') }}" class="aiz-side-nav-link">
-                                    <span class="aiz-side-nav-text">{{ translate('Author') }}</span>
-                                </a>
-                            </li>  
-                            <li class="aiz-side-nav-item">
-                                <a href="{{ route('admin.author_request') }}" class="aiz-side-nav-link">
-                                    <span class="aiz-side-nav-text">{{ translate('Author Request') }}</span>
-                                </a>
-                            </li>                           
-                        </ul>
-                    </li>
+                    <a href="#" class="aiz-side-nav-link">
+                        <i class="las la-user-circle aiz-side-nav-icon"></i>
+                        <span class="aiz-side-nav-text">{{ translate('Author List') }}</span>
+                        <span class="aiz-side-nav-arrow"></span>
+                    </a>
+                    <ul class="aiz-side-nav-list level-2">
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('admin.author') }}" class="aiz-side-nav-link">
+                                <span class="aiz-side-nav-text">{{ translate('Author') }}</span>
+                            </a>
+                        </li>  
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('admin.author_request') }}" class="aiz-side-nav-link">
+                                <span class="aiz-side-nav-text">{{ translate('Author Request') }}</span>
+                            </a>
+                        </li>                           
+                    </ul>
+                </li>
+
+                <li class="aiz-side-nav-item">
+                    <a href="#" class="aiz-side-nav-link">
+                        <i class="las la-address-book aiz-side-nav-icon"></i>
+                        <span class="aiz-side-nav-text">{{ translate('Book Finder') }}</span>
+                        <span class="aiz-side-nav-arrow"></span>
+                    </a>
+                    <ul class="aiz-side-nav-list level-2">
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('admin.book_finder_request') }}" class="aiz-side-nav-link">
+                                <span class="aiz-side-nav-text">{{ translate('Pending Request') }}</span>
+                            </a>
+                        </li>                         
+                    </ul>
+                </li>
 
                 <!-- POS Addon-->
                 @if (\App\Addon::where('unique_identifier', 'pos_system')->first() != null && \App\Addon::where('unique_identifier', 'pos_system')->first()->activated)

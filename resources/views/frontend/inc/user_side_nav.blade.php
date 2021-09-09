@@ -119,6 +119,13 @@
                     </li>
                 @else
                 
+                    <li class="aiz-side-nav-item">
+                        <a href="{{ route('book_finder_request.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['book_finder_request.index'])}}">
+                            <i class="las la-address-book aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">{{ translate('Book Finder Request') }}</span>
+                        </a>
+                    </li>
+
                     @php
                         $delivery_viewed = App\Order::where('user_id', Auth::user()->id)->where('delivery_viewed', 0)->get()->count();
                         $payment_status_viewed = App\Order::where('user_id', Auth::user()->id)->where('payment_status_viewed', 0)->get()->count();

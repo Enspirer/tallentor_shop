@@ -39,21 +39,26 @@
                         </div>                       
                         
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label">
-                                {{translate('Search Store Link')}}
+                            <label class="col-md-3 col-from-label">
+                                {{translate('Search Store Link')}} 
                                 <span class="text-danger">*</span>
                             </label>
+                            <br>
                             <div class="col-md-9">
-                                <input type="text" id="search_store_link" name="search_store_link" value="{{ $my_books->search_store_link }}" class="form-control" required>
+                                <select class="form-control aiz-selectpicker" id="search_store_link" name="search_store_link" data-live-search="true" required>
+                                    <option value="Enabled" {{ $my_books->search_store_link == 'Enabled' ? "selected" : "" }}>Enable</option>
+                                    <option value="Disabled" {{ $my_books->search_store_link == 'Disabled' ? "selected" : "" }}>Disable</option>
+                                </select>
                             </div>
                         </div>
+                        
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label">
                                 {{translate('Order')}}
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="col-md-9">
-                                <input type="text" placeholder="{{translate('Order')}}" id="order" name="order" value="{{ $my_books->order }}" class="form-control" required>
+                                <input type="number" placeholder="{{translate('Order')}}" id="order" name="order" value="{{ $my_books->order }}" class="form-control" required>
                             </div>
                         </div>  
 
