@@ -143,4 +143,6 @@ class BrandController extends Controller
         return redirect()->route('brands.index');
 
     }
+
+    
 }

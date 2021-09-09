@@ -20,6 +20,10 @@
 @section('meta_title'){{ $meta_title }}@stop
 @section('meta_description'){{ $meta_description }}@stop
 
+@push('after-styles')
+    <link rel="stylesheet" href="{{ static_asset('assets/css/publisher_page.css') }}">
+@endpush
+
 @section('meta')
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="{{ $meta_title }}">
@@ -107,26 +111,12 @@
                                             <div class="row mt-2">
                                                 <div class="col-6">
                                                     <span class="range-slider-value value-low fs-14 fw-600 opacity-70"
-                                                        @if (isset($min_price))
-                                                            data-range-value-low="{{ $min_price }}"
-                                                        @elseif($products->min('unit_price') > 0)
-                                                            data-range-value-low="{{ $products->min('unit_price') }}"
-                                                        @else
-                                                            data-range-value-low="0"
-                                                        @endif
-                                                        id="input-slider-range-value-low"
+                                                        
                                                     ></span>
                                                 </div>
                                                 <div class="col-6 text-right">
                                                     <span class="range-slider-value value-high fs-14 fw-600 opacity-70"
-                                                        @if (isset($max_price))
-                                                            data-range-value-high="{{ $max_price }}"
-                                                        @elseif($products->max('unit_price') > 0)
-                                                            data-range-value-high="{{ $products->max('unit_price') }}"
-                                                        @else
-                                                            data-range-value-high="0"
-                                                        @endif
-                                                        id="input-slider-range-value-high"
+                                                        
                                                     ></span>
                                                 </div>
                                             </div>
@@ -139,73 +129,26 @@
                                     </div>
                                     <div class="p-3">
                                         <div class="aiz-radio-inline">
-                                            @foreach ($all_colors as $key => $color)
-                                            <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="{{ \App\Color::where('code', $color)->first()->name }}">
+                                            <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="">
                                                 <input
-                                                    type="radio"
-                                                    name="color"
-                                                    value="{{ $color }}"
-                                                    onchange="filter()"
-                                                    @if(isset($selected_color) && $selected_color == $color) checked @endif
+                                                    
                                                 >
                                                 <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                                                    <span class="size-30px d-inline-block rounded" style="background: {{ $color }};"></span>
+                                                    <span class="size-30px d-inline-block rounded" style="background:;"></span>
                                                 </span>
                                             </label>
-                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
 
-                                @foreach ($attributes as $key => $attribute)
-                                    @if (\App\Attribute::find($attribute['id']) != null)
-                                        <div class="bg-white shadow-sm rounded mb-3">
-                                            <div class="fs-15 fw-600 p-3 border-bottom">
-                                                {{ translate('Filter by') }} {{ \App\Attribute::find($attribute['id'])->getTranslation('name') }}
-                                            </div>
-                                            <div class="p-3">
-                                                <div class="aiz-checkbox-list">
-                                                    @if(array_key_exists('values', $attribute))
-                                                        @foreach ($attribute['values'] as $key => $value)
-                                                            @php
-                                                                $flag = false;
-                                                                if(isset($selected_attributes)){
-                                                                    foreach ($selected_attributes as $key => $selected_attribute) {
-                                                                        if($selected_attribute['id'] == $attribute['id']){
-                                                                            if(in_array($value, $selected_attribute['values'])){
-                                                                                $flag = true;
-                                                                                break;
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            @endphp
-                                                            <label class="aiz-checkbox">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    name="attribute_{{ $attribute['id'] }}[]"
-                                                                    value="{{ $value }}" @if ($flag) checked @endif
-                                                                    onchange="filter()"
-                                                                >
-                                                                <span class="aiz-square-check"></span>
-                                                                <span>{{ $value }}</span>
-                                                            </label>
-                                                        @endforeach
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
-                                @endforeach
-
-                                {{-- <button type="submit" class="btn btn-styled btn-block btn-base-4">Apply filter</button> --}}
+                                
                             </div>
                         </div>
                     </div>
                     
                     <div class="col-xl-9">
 
-                        <ul class="breadcrumb bg-transparent p-0">
+                    <ul class="breadcrumb bg-transparent p-0">
                             <li class="breadcrumb-item opacity-50">
                                 <a class="text-reset" href="{{ route('home') }}">{{ translate('Home')}}</a>
                             </li>
@@ -242,8 +185,8 @@
                                     <label class="mb-0 opacity-50">{{ translate('Publisher')}}</label>
                                     <select class="form-control form-control-sm aiz-selectpicker" data-live-search="true" name="brand" onchange="filter()">
                                         <option value="">{{ translate('All Publisher')}}</option>
-                                        @foreach (\App\Brand::all() as $brand)
-                                            <option value="{{ $brand->slug }}" @isset($brand_id) @if ($brand_id == $brand->id) selected @endif @endisset>{{ $brand->getTranslation('name') }}</option>
+                                        @foreach (\App\Brand::all() as $brandl)
+                                            <option value="{{ $brandl->slug }}" @isset($brand_id) @if ($brand_id == $brandl->id) selected @endif @endisset> {{ $brandl->getTranslation('name') }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -263,55 +206,76 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" name="min_price" value="">
-                        <input type="hidden" name="max_price" value="">
+                        
+                        <section class="author_page">
+                            <div class="container-fluid p-0">
+                                <img src="{{ url('assets/img/publisher/cover.png') }}" alt="" class="img-fluid w-100">
+                            </div>
 
 
-                        @if($brand_id)
-                            <section class="author_page">
-                                <div class="container-fluid p-0">
-                                    @if(\App\Models\Brand::where('id',$brand_id)->first()->cover_photo != null)
-                                        <img src="{{ uploaded_asset(\App\Models\Brand::where('id',$brand_id)->first()->cover_photo)}}" alt="" class="img-fluid w-100" style="object-fit:cover; height: 20rem;">
+                            <div class="container position-relative">
+                                <div class="row align-items-center">
+                                    <div class="col-sm-2 profile-img">
+                                    @if($brand->logo != null)
+                                        <img src="{{ uploaded_asset($brand->logo)}}" class="position-absolute img-fluid shadow-lg" alt="" style="top: -7rem; object-fit: cover; height: 10rem; left: 1.5rem; border: 5px solid white; border-radius: 9px;">
                                     @else
-                                        <img src="{{ url('assets/img/t-2.jpg') }}" alt="" class="img-fluid w-100" style="object-fit:cover; height: 20rem; border: 3px solid white; border-radius: 10px;">   
-                                    @endif    
-                                </div>
-                                <div class="container position-relative">
-                                    <div class="row align-items-center">
-                                        <div class="col-sm-2 profile-img">
-                                            @if(\App\Models\Brand::where('id',$brand_id)->first()->logo != null)
-                                                <img src="{{ uploaded_asset(\App\Models\Brand::where('id',$brand_id)->first()->logo)}}" class="position-absolute img-fluid shadow-lg" alt="" style="top: -7rem; object-fit: cover; height: 10rem; left: 1.5rem; border: 5px solid white; border-radius: 9px;">
-                                            @else
-                                                <img src="{{ url('assets/img/t-2.jpg') }}" class="position-absolute img-fluid shadow-lg" alt="" style="top: -7rem; object-fit: cover; height: 10rem; left: 1.5rem; border: 5px solid white; border-radius: 9px;">
-                                            @endif
-                                        </div>
+                                        <img src="{{ url('assets/img/t1.png') }}" class="position-absolute img-fluid shadow-lg" alt="" style="top: -7rem; object-fit: cover; height: 10rem; left: 1.5rem; border: 5px solid white; border-radius: 9px;">
+                                    @endif
+                                    </div>
 
-                                        <div class="col-sm-9 profile-name" style="padding-left: 4rem;">
-                                            <h3 class="font-weight-bold mb-0">{{ \App\Models\Brand::where('id',$brand_id)->first()->name }}</h3>
-                                        </div>
+                                    <div class="col-sm-9 profile-name" style="padding-left: 4rem;">
+                                        <h3 class="font-weight-bold mb-0">{{ $brand-> name }}</h3>
                                     </div>
                                 </div>
-                            </section> <br><br><br>
-
-                        @else
-
-
-                        @endif
+                            </div>
 
 
 
+                            <div class="publisher" style="margin-top: 6rem; margin-bottom: 6rem;">
 
+                                @if(count($latest_books) > 0)
+                                    <div class="container new-arrivals bg-white p-4">
+                                        <h5 class="font-weight-bold">New Arrivals</h5>
+                                        <hr class="m-0" style="height:2px; border-width:0; width: 9.5rem; background-color:#FF0000">
 
-                        <div class="row gutters-5 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
-                            @foreach ($products as $key => $product)
-                                <div class="col">
-                                    @include('frontend.partials.product_box_1',['product' => $product])
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="aiz-pagination aiz-pagination-center mt-4">
-                            {{ $products->links() }}
-                        </div>
+                                        <div class="mt-4">
+                                            <div class="row mb-4 justify-content-center">
+                                                <div class="col-12 col-sm">        
+                                                    <div class="row gutters-5 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
+                                                        @foreach($latest_books as $latest_book)
+                                                            <div class="col">
+                                                                @include('frontend.partials.product_box_1',['product' => $latest_book])
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+
+                                @if(count($featured_books) > 0)
+                                    <div class="container featured-books bg-white p-4 mt-5">
+                                        <h5 class="font-weight-bold">Featured Books</h5>
+                                        <hr class="m-0" style="height:2px; border-width:0; width: 11.5rem; background-color:#FF0000">
+
+                                        <div class="mt-4">
+                                            <div class="row mb-4 justify-content-center">
+                                                <div class="col-12 col-sm">
+                                                    <div class="row gutters-5 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
+                                                        @foreach($featured_books as $featured_book)
+                                                            <div class="col">
+                                                                @include('frontend.partials.product_box_1',['product' => $featured_book])
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                        </section>                                       
                     </div>
                 </div>
             </form>

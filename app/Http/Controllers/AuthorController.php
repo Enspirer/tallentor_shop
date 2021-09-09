@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use Illuminate\Http\Request;
 use App\Models\MyBooks;
+use App\Product;
 
 class AuthorController extends Controller
 {
@@ -24,13 +25,13 @@ class AuthorController extends Controller
         $author->cover_photo = $request->cover_photo;
         $author->email = $request->email;
         $author->contact_number = $request->phone_number;
-        $author->status = 'Approved';
+        $author->status = 'Pending';
         $author->facebook_link = '';
         $author->twitter_link = '';
         $author->slug = '883Drjjsel';
         $author->save();
         flash(translate('Author has been inserted successfully'))->success();
-        return back();
+        return redirect()->route('dashboard');
     }
 
     public function update_author(Request $request)
@@ -159,7 +160,13 @@ class AuthorController extends Controller
 
 
 
-    public function author_page() {
-        return view('frontend.author_page');
+    public function author_page($id) {
+
+        $author = Author::where('id', $id)->first();
+
+        $books = Product::where('author_id', $id)->orderBy('id', 'desc')->get();
+
+
+        return view('frontend.author_page', ['author' => $author, 'books' => $books]);
     }
 }

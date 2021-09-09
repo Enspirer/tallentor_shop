@@ -1,3 +1,8 @@
+.social i {
+    font-size: 1.1rem;
+}
+
+
 @media screen and (max-width: 576px) {
     .profile-img {
         text-align: center;

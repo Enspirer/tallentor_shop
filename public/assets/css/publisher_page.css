@@ -1,0 +1,69 @@
+.icons {
+    right: 0px;
+    top: 0;
+    z-index: 1;
+    transition: all 0.5s;
+    opacity: 0;
+}
+
+.move-icons {
+    right: 40px!important;
+    opacity: 1!important;
+}
+
+.icons a {
+    display: block;
+    height: 32px;
+    width: 32px;
+    line-height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    background: #fff;
+    margin-top: 5px;
+    margin-right: 5px;
+    color: #333;
+    font-size: 15px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1), 0 3px 8px rgba(0,0,0,0.12);
+    transform: translateX(calc(100% + 7px));
+    -webkit-transform: translateX(calc(100% + 7px));
+}
+[dir="rtl"] .icons a {
+    transform: translateX(calc(-100% - 7px));
+    -webkit-transform: translateX(calc(-100% - 7px));
+    margin-left: 5px;
+}
+.icons a:hover {
+    background: var(--primary);
+    color: #fff;
+}
+.icons a:nth-child(2) {
+    transition-delay: 0.05s;
+    -webkit-transition-delay: 0.05s;
+}
+.icons a:nth-child(3) {
+    transition-delay: 0.1s;
+    -webkit-transition-delay: 0.1s;
+}
+
+
+
+
+@media screen and (max-width: 576px) {
+    .profile-img {
+        text-align: center;
+    }
+    .profile-img img {
+        height: 8rem!important;
+        position: relative!important;
+        top: -1rem!important;
+    }
+    .profile-name {
+        text-align: center;
+    }
+    .publisher {
+        margin-top: 3rem!important;
+    }
+    .publisher .card img {
+        height: 17rem!important;
+    }
+}

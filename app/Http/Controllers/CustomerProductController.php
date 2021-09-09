@@ -10,6 +10,7 @@ use App\SubCategory;
 use App\Brand;
 use App\SubSubCategory;
 use Auth;
+use App\Product;
 use ImageOptimizer;
 use Illuminate\Support\Str;
 use App\Utility\CategoryUtility;
@@ -260,6 +261,7 @@ class CustomerProductController extends Controller
 
     public function search(Request $request)
     {
+
         $query = $request->q;
         $brand_id = (Brand::where('slug', $request->brand)->first() != null) ? Brand::where('slug', $request->brand)->first()->id : null;
         $category_id = (Category::where('slug', $request->category)->first() != null) ? Category::where('slug', $request->category)->first()->id : null;
@@ -267,6 +269,7 @@ class CustomerProductController extends Controller
         $condition = $request->condition;
 
         $conditions = ['published' => 1, 'status' => 1];
+
 
         if($brand_id != null){
             $conditions = array_merge($conditions, ['brand_id' => $brand_id]);
@@ -317,6 +320,19 @@ class CustomerProductController extends Controller
 
         $customer_products = $customer_products->paginate(12)->appends(request()->query());
 
+
         return view('frontend.customer_product_listing', compact('customer_products', 'query', 'category_id', 'brand_id', 'sort_by', 'condition'));
+    }
+
+    public function publisher_page(Request $request, $id) {
+
+    
+        $brand = Brand::where('id', $id)->first();
+
+        $latest_books = Product::where('brand_id', $id)->orderBy('id', 'desc')->take(5)->get();
+
+        $featured_books = Product::where('brand_id', $id)->where('featured', 1)->orderBy('id', 'desc')->get();
+
+        return view('frontend.publisher_page', ['brand' => $brand, 'latest_books' => $latest_books, 'featured_books' => $featured_books]);
     }
 }

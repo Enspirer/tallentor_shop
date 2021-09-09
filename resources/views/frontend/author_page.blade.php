@@ -8,7 +8,7 @@
 
     <section class="author_page">
         <div class="container-fluid p-0">
-            <img src="{{ url('assets/img/author/author_page_banner.png') }}" alt="" class="img-fluid w-100">
+            <img src="{{ uploaded_asset($author->cover_photo)}}" alt="" class="img-fluid w-100">
         </div>
 
 
@@ -58,6 +58,13 @@
                             <p class="mb-0">user@gmail.com</p>
                         </div>
                     </div>
+
+
+                    <div class="social row mt-3 align-items-center" style="padding-left: 2.4rem;">
+                        <a href="#" style="color:black;"><i class="bi bi-facebook mr-3"></i></a>
+                        <a href="#" style="color:black;"><i class="bi bi-twitter mr-3"></i></a>
+                        <a href="#" style="color:black;"><i class="bi bi-linkedin mr-3"></i></a>
+                    </div>
                 </div>
 
                 <div class="col-sm-8">
@@ -71,7 +78,7 @@
 
         <div class="my-books" style="margin-top: 6rem; margin-bottom: 6rem;">
             <div class="container bg-white p-5">
-                <h5>My Books</h5>
+                <h5 class="font-weight-bold" p-2>My Books</h5>
                 <hr class="m-0" style="height:2px; border-width:0; width: 7.5rem; background-color:#FF0000">
 
                 <div class="mt-5">
@@ -79,7 +86,7 @@
                         <div class="col-sm">
                             <div class="card shadow-lg">
                                 <img src="{{ url('assets/img/author/book.png') }}" class="card-img-top img-fluid" alt="...">
-                                <div class="card-body">
+                                <div class="card-body p-2">
                                     <h5 class="card-title font-weight-bold" style="font-size: 0.9rem;">The Hacking</h5>
                                     <p class="card-text" style="font-size: 0.8rem; text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea commodi saepe. Consequatur vitae ipsa, libero eum saepe earum blanditiis!</p>
                                 </div>
@@ -89,7 +96,7 @@
                         <div class="col-sm">
                             <div class="card shadow-lg">
                                 <img src="{{ url('assets/img/author/book.png') }}" class="card-img-top img-fluid" alt="...">
-                                <div class="card-body">
+                                <div class="card-body p-2">
                                     <h5 class="card-title font-weight-bold" style="font-size: 0.9rem;">The Hacking</h5>
                                     <p class="card-text" style="font-size: 0.8rem; text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea commodi saepe. Consequatur vitae ipsa, libero eum saepe earum blanditiis!</p>
                                 </div>
@@ -99,7 +106,7 @@
                         <div class="col-sm">
                             <div class="card shadow-lg">
                                 <img src="{{ url('assets/img/author/book.png') }}" class="card-img-top img-fluid" alt="...">
-                                <div class="card-body">
+                                <div class="card-body p-2">
                                     <h5 class="card-title font-weight-bold" style="font-size: 0.9rem;">The Hacking</h5>
                                     <p class="card-text" style="font-size: 0.8rem; text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea commodi saepe. Consequatur vitae ipsa, libero eum saepe earum blanditiis!</p>
                                 </div>
@@ -109,7 +116,7 @@
                         <div class="col-sm">
                             <div class="card shadow-lg">
                                 <img src="{{ url('assets/img/author/book.png') }}" class="card-img-top img-fluid" alt="...">
-                                <div class="card-body">
+                                <div class="card-body p-2">
                                     <h5 class="card-title font-weight-bold" style="font-size: 0.9rem;">The Hacking</h5>
                                     <p class="card-text" style="font-size: 0.8rem; text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea commodi saepe. Consequatur vitae ipsa, libero eum saepe earum blanditiis!</p>
                                 </div>
@@ -119,7 +126,7 @@
                         <div class="col-sm">
                             <div class="card shadow-lg">
                                 <img src="{{ url('assets/img/author/book.png') }}" class="card-img-top img-fluid" alt="...">
-                                <div class="card-body">
+                                <div class="card-body p-2">
                                     <h5 class="card-title font-weight-bold" style="font-size: 0.9rem;">The Hacking</h5>
                                     <p class="card-text" style="font-size: 0.8rem; text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea commodi saepe. Consequatur vitae ipsa, libero eum saepe earum blanditiis!</p>
                                 </div>
@@ -131,7 +138,7 @@
                         <div class="col-sm">
                             <div class="card shadow-lg">
                                 <img src="{{ url('assets/img/author/book.png') }}" class="card-img-top img-fluid" alt="...">
-                                <div class="card-body">
+                                <div class="card-body p-2">
                                     <h5 class="card-title font-weight-bold" style="font-size: 0.9rem;">The Hacking</h5>
                                     <p class="card-text" style="font-size: 0.8rem; text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea commodi saepe. Consequatur vitae ipsa, libero eum saepe earum blanditiis!</p>
                                 </div>
@@ -141,7 +148,7 @@
                         <div class="col-sm">
                             <div class="card shadow-lg">
                                 <img src="{{ url('assets/img/author/book.png') }}" class="card-img-top img-fluid" alt="...">
-                                <div class="card-body">
+                                <div class="card-body p-2">
                                     <h5 class="card-title font-weight-bold" style="font-size: 0.9rem;">The Hacking</h5>
                                     <p class="card-text" style="font-size: 0.8rem; text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea commodi saepe. Consequatur vitae ipsa, libero eum saepe earum blanditiis!</p>
                                 </div>
@@ -151,7 +158,7 @@
                         <div class="col-sm">
                             <div class="card shadow-lg">
                                 <img src="{{ url('assets/img/author/book.png') }}" class="card-img-top img-fluid" alt="...">
-                                <div class="card-body">
+                                <div class="card-body p-2">
                                     <h5 class="card-title font-weight-bold" style="font-size: 0.9rem;">The Hacking</h5>
                                     <p class="card-text" style="font-size: 0.8rem; text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea commodi saepe. Consequatur vitae ipsa, libero eum saepe earum blanditiis!</p>
                                 </div>
@@ -161,7 +168,7 @@
                         <div class="col-sm">
                             <div class="card shadow-lg">
                                 <img src="{{ url('assets/img/author/book.png') }}" class="card-img-top img-fluid" alt="...">
-                                <div class="card-body">
+                                <div class="card-body p-2">
                                     <h5 class="card-title font-weight-bold" style="font-size: 0.9rem;">The Hacking</h5>
                                     <p class="card-text" style="font-size: 0.8rem; text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea commodi saepe. Consequatur vitae ipsa, libero eum saepe earum blanditiis!</p>
                                 </div>
@@ -171,7 +178,7 @@
                         <div class="col-sm">
                             <div class="card shadow-lg">
                                 <img src="{{ url('assets/img/author/book.png') }}" class="card-img-top img-fluid" alt="...">
-                                <div class="card-body">
+                                <div class="card-body p-2">
                                     <h5 class="card-title font-weight-bold" style="font-size: 0.9rem;">The Hacking</h5>
                                     <p class="card-text" style="font-size: 0.8rem; text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea commodi saepe. Consequatur vitae ipsa, libero eum saepe earum blanditiis!</p>
                                 </div>
