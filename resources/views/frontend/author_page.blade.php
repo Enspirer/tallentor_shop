@@ -58,6 +58,13 @@
                             <p class="mb-0">user@gmail.com</p>
                         </div>
                     </div>
+
+
+                    <div class="social row mt-3 align-items-center" style="padding-left: 2.4rem;">
+                        <a href="#" style="color:black;"><i class="bi bi-facebook mr-3"></i></a>
+                        <a href="#" style="color:black;"><i class="bi bi-twitter mr-3"></i></a>
+                        <a href="#" style="color:black;"><i class="bi bi-linkedin mr-3"></i></a>
+                    </div>
                 </div>
 
                 <div class="col-sm-8">
