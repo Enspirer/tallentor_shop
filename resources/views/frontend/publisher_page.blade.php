@@ -216,7 +216,11 @@
                             <div class="container position-relative">
                                 <div class="row align-items-center">
                                     <div class="col-sm-2 profile-img">
+                                    @if($brand->logo != null)
                                         <img src="{{ uploaded_asset($brand->logo)}}" class="position-absolute img-fluid shadow-lg" alt="" style="top: -7rem; object-fit: cover; height: 10rem; left: 1.5rem; border: 5px solid white; border-radius: 9px;">
+                                    @else
+                                        <img src="{{ url('assets/img/t1.png') }}" class="position-absolute img-fluid shadow-lg" alt="" style="top: -7rem; object-fit: cover; height: 10rem; left: 1.5rem; border: 5px solid white; border-radius: 9px;">
+                                    @endif
                                     </div>
 
                                     <div class="col-sm-9 profile-name" style="padding-left: 4rem;">
