@@ -265,6 +265,35 @@
                         </div>
                         <input type="hidden" name="min_price" value="">
                         <input type="hidden" name="max_price" value="">
+
+
+                        @if($brand_id)
+                            <section class="author_page">
+                                <div class="container-fluid p-0">
+                                    <img src="{{ url('assets/img/publisher/cover.png') }}" alt="" class="img-fluid w-100">
+                                </div>
+                                <div class="container position-relative">
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-2 profile-img">
+                                            <img src="{{ uploaded_asset(\App\Models\Brand::where('id',$brand_id)->first()->logo)}}" class="position-absolute img-fluid shadow-lg" alt="" style="top: -7rem; object-fit: cover; height: 10rem; left: 1.5rem; border: 5px solid white; border-radius: 9px;">
+                                        </div>
+
+                                        <div class="col-sm-9 profile-name" style="padding-left: 4rem;">
+                                            <h3 class="font-weight-bold mb-0">{{ \App\Models\Brand::where('id',$brand_id)->first()->name }}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section> <br><br><br>
+
+                        @else
+
+
+                        @endif
+
+
+
+
+
                         <div class="row gutters-5 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
                             @foreach ($products as $key => $product)
                                 <div class="col">
