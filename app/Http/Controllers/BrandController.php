@@ -144,7 +144,5 @@ class BrandController extends Controller
 
     }
 
-    public function publisher_page() {
-        return view('frontend.publisher_page');
-    }
+    
 }

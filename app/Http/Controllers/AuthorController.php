@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use Illuminate\Http\Request;
 use App\Models\MyBooks;
+use App\Product;
 
 class AuthorController extends Controller
 {
@@ -156,7 +157,13 @@ class AuthorController extends Controller
 
 
 
-    public function author_page() {
-        return view('frontend.author_page');
+    public function author_page($id) {
+
+        $author = Author::where('id', $id)->first();
+
+        $books = Product::where('author_id', $id)->orderBy('id', 'desc')->get();
+
+
+        return view('frontend.author_page', ['author' => $author, 'books' => $books]);
     }
 }
