@@ -22,7 +22,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::get('/author', 'AuthorBackendController@index')->name('admin.author');
     Route::get('/author/destroy/{id}', 'AuthorBackendController@destroy')->name('author.destroy');
     Route::get('/author/admin/edit/{id}', 'AuthorBackendController@edit')->name('author.edit');
-    Route::post('/author/update/{id}', 'AuthorBackendController@update')->name('author.update');
+
+    Route::get('/author_request', 'AuthorRequestBackendController@index')->name('admin.author_request');
+    Route::get('/author_request/destroy/{id}', 'AuthorRequestBackendController@destroy')->name('author_request.destroy');
+    Route::get('/author_request/admin/edit/{id}', 'AuthorRequestBackendController@edit')->name('author_request.edit');
 
 
     Route::resource('categories', 'CategoryController');
