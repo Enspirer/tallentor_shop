@@ -1,0 +1,19 @@
+@media screen and (max-width: 576px) {
+    .profile-img {
+        text-align: center;
+    }
+    .profile-img img {
+        height: 8rem!important;
+        position: relative!important;
+        top: -1rem!important;
+    }
+    .profile-name {
+        text-align: center;
+    }
+    .publisher {
+        margin-top: 3rem!important;
+    }
+    .publisher .card img {
+        height: 17rem!important;
+    }
+}

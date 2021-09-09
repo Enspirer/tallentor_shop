@@ -143,4 +143,8 @@ class BrandController extends Controller
         return redirect()->route('brands.index');
 
     }
+
+    public function publisher_page() {
+        return view('frontend.publisher_page');
+    }
 }

@@ -255,4 +255,5 @@ class SellerController extends Controller
         $seller->user->save();
         return back();
     }
+
 }

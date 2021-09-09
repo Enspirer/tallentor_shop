@@ -155,6 +155,8 @@ Route::get('/privacypolicy', 'HomeController@privacypolicy')->name('privacypolic
 
 Route::get('/author-page/{id}','AuthorController@author_page')->name('author_page');
 
+Route::get('/publisher-page','BrandController@publisher_page')->name('publisher_page');
+
 
 Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
     Route::get('/author-create','AuthorController@create_author')->name('author_create');
