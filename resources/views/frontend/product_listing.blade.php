@@ -240,7 +240,7 @@
                                 <div class="form-group ml-auto mr-0 w-200px d-none d-xl-block">
                                     <label class="mb-0 opacity-50">{{ translate('Publisher')}}</label>
                                     <select class="form-control form-control-sm aiz-selectpicker" data-live-search="true" name="brand" onchange="filter()">
-                                        <option value="">{{ translate('All Brands')}}</option>
+                                        <option value="">{{ translate('All Publisher')}}</option>
                                         @foreach (\App\Brand::all() as $brand)
                                             <option value="{{ $brand->slug }}" @isset($brand_id) @if ($brand_id == $brand->id) selected @endif @endisset>{{ $brand->getTranslation('name') }}</option>
                                         @endforeach

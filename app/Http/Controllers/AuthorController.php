@@ -65,7 +65,12 @@ class AuthorController extends Controller
         return view('frontend.user.author.my_bookings');
     }
 
-    public function author_page() {
-        return view('frontend.author_page');
+    public function author_page($id) {
+
+        $authorPage = Author::where('id',$id)->first();
+
+        return view('frontend.author_page',[
+            'author_page' => $authorPage
+        ]);
     }
 }

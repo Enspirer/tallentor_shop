@@ -153,7 +153,7 @@ Route::get('/supportpolicy', 'HomeController@supportpolicy')->name('supportpolic
 Route::get('/terms', 'HomeController@terms')->name('terms');
 Route::get('/privacypolicy', 'HomeController@privacypolicy')->name('privacypolicy');
 
-Route::get('/author-page','AuthorController@author_page')->name('author_page');
+Route::get('/author-page/{id}','AuthorController@author_page')->name('author_page');
 
 
 Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
