@@ -1,6 +1,23 @@
 .social i {
     font-size: 1.1rem;
 }
+.nav-tabs {
+    border-bottom: none!important;
+}
+.nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+    border-bottom: 2px solid #FF0000!important;
+}
+.nav-tabs .nav-link {
+    border: none!important;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    font-size: 1rem;
+    background-color: white!important;
+    
+}
 
 
 @media screen and (max-width: 576px) {

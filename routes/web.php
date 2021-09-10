@@ -176,8 +176,6 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
 
     // ************ my Writings end ********************
 
-
-
     // ************ my books start ********************
 
     Route::get('/my-books','AuthorController@my_books')->name('my_books');
@@ -187,9 +185,10 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
     Route::post('/my-books/update/{id}', 'AuthorController@update')->name('my_books.update');
     Route::get('/my-books/destroy/{id}', 'AuthorController@destroy')->name('my_books.destroy');
 
+    Route::post('favorite/author', 'AuthorController@favoriteHeart')->name('favorite_heart');
+
     // ************ my books end ********************
 
-  
     Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
     Route::get('/profile', 'HomeController@profile')->name('profile');
     Route::post('/new-user-verification', 'HomeController@new_verify')->name('user.new.verify');

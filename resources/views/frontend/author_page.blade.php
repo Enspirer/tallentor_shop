@@ -16,7 +16,7 @@
         </div>
 
 
-        <div class="container position-relative">
+        <div class="container position-relative mt-2">
             <div class="row align-items-center">
                 <div class="col-sm-2 profile-img">
                     @if(\App\Models\Author::where('id', $author->id)->first()->profile_picture != null)
@@ -30,14 +30,38 @@
                     <h3 class="font-weight-bold mb-0">{{ $author->author_name }}</h3>
                 </div>
 
+                
                 <div class="col-sm-3">
                     <div class="row align-items-center profile-buttons">
                         <div class="col-7 col-md-8 text-right">
                             <button class="btn shadow-lg bg-white" style="border-radius: 0.8rem;">468 Followers</button>
                         </div>
-                        <div class="col-5 col-md-4">
-                        <button class="bi bi-heart-fill border-0 shadow-lg px-3 py-1" style="border-radius: 0.8rem; font-size: 1.5rem; color: #FF6243; background-color: white"></button>
-                        </div>
+
+                        @auth
+                            @if(is_favorite($author->id, auth()->user()->id))
+                                <div class="col-5 col-md-4 small-heart">
+                                    <form action="{{ route('favorite_heart') }}" method="POST">
+                                    {{csrf_field()}}
+                                        <input type="hidden" class="author_id" name='hid_id' value="{{ $author->id }}">
+                                        <input type="hidden" class="favorite" name='favorite' value="favorite">
+                                        <button class="bi bi-heart-fill border-0 shadow-lg px-3 py-1" style="border-radius: 0.8rem; font-size: 1.5rem; color: #FF6243; background-color: white" type="submit"></button>
+                                    </form>
+                                </div>
+                            @else
+                                <div class="col-5 col-md-4 small-heart">
+                                    <form action="{{ route('favorite_heart') }}" method="POST">
+                                    {{csrf_field()}}
+                                        <input type="hidden" class="author_id" name='hid_id' value="{{ $author->id }}">
+                                        <input type="hidden" class="favorite" name='favorite' value="non-favorite">
+                                        <button class="bi bi-heart border-0 shadow-lg px-3 py-1" style="border-radius: 0.8rem; font-size: 1.5rem; color: #FF6243; background-color: white" type="submit"></button>
+                                    </form>
+                                </div>
+                            @endif
+                        @else
+                            <div class="col-3 small-heart">
+                                <a href="{{ route('auth.login') }}" class="bi bi-heart border-0 shadow-lg px-3 py-1" style="border-radius: 0.8rem; font-size: 1.5rem; color: #FF6243; background-color: white"></a>
+                            </div>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -76,10 +100,77 @@
                 </div>
 
                 <div class="col-sm-8">
-                    <h5 class="font-weight-bold">Bio</h5>
+                    <!-- <h5 class="font-weight-bold">Bio</h5>
                     <hr class="m-0" style="height:2px; border-width:0; width: 5.5rem; background-color:#FF0000">
 
-                    <p class="mt-3 mb-0" style="text-align:justify;">{{ $author->description }}</p>
+                    <p class="mt-3 mb-0" style="text-align:justify;">{{ $author->author_description }}</p> -->
+
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active font-weight-bold mr-5 p-0" id="bio-tab" data-toggle="tab" data-target="#bio" type="button" role="tab" aria-controls="bio" aria-selected="true">Bio</button>
+                            <!-- <hr class="m-0" style="height:2px; border-width:0; width: 5.5rem; background-color:#FF0000"> -->
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link font-weight-bold mr-3 p-0" id="writings-tab" data-toggle="tab" data-target="#writings" type="button" role="tab" aria-controls="writings" aria-selected="false">My Writings</button>
+                            <!-- <hr class="m-0" style="height:2px; border-width:0; width: 5.5rem; background-color:#FF0000"> -->
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="bio" role="tabpanel" aria-labelledby="bio-tab">
+                            <p class="mt-3 mb-0" style="text-align:justify;">{{ $author->author_description }}</p>
+                        </div>
+                        <div class="tab-pane fade" id="writings" role="tabpanel" aria-labelledby="writings-tab">
+                            <div class="row mt-3 border mx-0 py-2 rounded shadow-lg mb-4">
+                                <div class="col-6">
+                                    <img src="{{ url('uploads/all/0NYgtRkBZtZWV7kOoCXj3gWJq0Som2WRLj9tUj0r.jpg') }}" alt="" class="img-fluid" style="object-fit: cover;">
+                                </div>
+                                <div class="col-6">
+                                    <h5 class="font-weight-bold">Ninja Guy</h5>
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis tempora aut assumenda repudiandae. Molestias earum veniam voluptates itaque, aspernatur, asperiores nisi numquam cupiditate, sit animi quia assumenda nostrum! Voluptate veritatis dolor officiis quod natus optio sit explicabo iusto beatae sapiente. Molestiae obcaecati voluptates laborum animi eaque architecto tempora ullam ratione.</p>
+
+                                    <div class="row justify-content-end">
+                                        <div class="col-4 text-end">
+                                            <button class="btn btn-primary">View More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3 border mx-0 py-2 rounded shadow-lg mb-4">
+                                <div class="col-6">
+                                    <img src="{{ url('uploads/all/0NYgtRkBZtZWV7kOoCXj3gWJq0Som2WRLj9tUj0r.jpg') }}" alt="" class="img-fluid" style="object-fit: cover;">
+                                </div>
+                                <div class="col-6">
+                                    <h5 class="font-weight-bold">Ninja Guy</h5>
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis tempora aut assumenda repudiandae. Molestias earum veniam voluptates itaque, aspernatur, asperiores nisi numquam cupiditate, sit animi quia assumenda nostrum! Voluptate veritatis dolor officiis quod natus optio sit explicabo iusto beatae sapiente. Molestiae obcaecati voluptates laborum animi eaque architecto tempora ullam ratione.</p>
+
+                                    <div class="row justify-content-end">
+                                        <div class="col-4 text-end">
+                                            <button class="btn btn-primary">View More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3 border mx-0 py-2 rounded shadow-lg mb-4">
+                                <div class="col-6">
+                                    <img src="{{ url('uploads/all/0NYgtRkBZtZWV7kOoCXj3gWJq0Som2WRLj9tUj0r.jpg') }}" alt="" class="img-fluid" style="object-fit: cover;">
+                                </div>
+                                <div class="col-6">
+                                    <h5 class="font-weight-bold">Ninja Guy</h5>
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis tempora aut assumenda repudiandae. Molestias earum veniam voluptates itaque, aspernatur, asperiores nisi numquam cupiditate, sit animi quia assumenda nostrum! Voluptate veritatis dolor officiis quod natus optio sit explicabo iusto beatae sapiente. Molestiae obcaecati voluptates laborum animi eaque architecto tempora ullam ratione.</p>
+
+                                    <div class="row justify-content-end">
+                                        <div class="col-4 text-end">
+                                            <button class="btn btn-primary">View More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -170,4 +261,22 @@
             });
         }
     </script>
+
+<script>
+    $('.small-heart').on('click', function(){
+
+        let status = $(this).find('.favourite').val();
+
+        if(status == 'non-favourite') {
+            $(this).find('button').removeClass('bi-heart');
+            $(this).find('button').addClass('bi-heart-fill');
+            $(this).find('.favourite').val('favourite');
+        }
+        else {
+            $(this).find('button').removeClass('bi-heart-fill');
+            $(this).find('button').addClass('bi-heart');
+            $(this).find('.favourite').val('non-favourite');
+        }
+    });
+</script>
 @endpush
