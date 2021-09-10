@@ -273,7 +273,7 @@
                                     @if(\App\Models\Brand::where('id',$brand_id)->first()->cover_photo != null)
                                         <img src="{{ uploaded_asset(\App\Models\Brand::where('id',$brand_id)->first()->cover_photo)}}" alt="" class="img-fluid w-100" style="object-fit:cover; height: 20rem;">
                                     @else
-                                        <img src="{{ url('assets/img/t-2.jpg') }}" alt="" class="img-fluid w-100" style="object-fit:cover; height: 20rem; border: 3px solid white; border-radius: 10px;">   
+                                        <img src="{{ uploaded_asset(\App\Models\Brand::where('id',$brand_id)->first()->cover_photo)}}" alt="" class="img-fluid w-100" style="object-fit:cover; height: 20rem; border: 3px solid white; border-radius: 10px;">   
                                     @endif    
                                 </div>
                                 <div class="container position-relative">
@@ -282,7 +282,7 @@
                                             @if(\App\Models\Brand::where('id',$brand_id)->first()->logo != null)
                                                 <img src="{{ uploaded_asset(\App\Models\Brand::where('id',$brand_id)->first()->logo)}}" class="position-absolute img-fluid shadow-lg" alt="" style="top: -7rem; object-fit: cover; height: 10rem; left: 1.5rem; border: 5px solid white; border-radius: 9px;">
                                             @else
-                                                <img src="{{ url('assets/img/t-2.jpg') }}" class="position-absolute img-fluid shadow-lg" alt="" style="top: -7rem; object-fit: cover; height: 10rem; left: 1.5rem; border: 5px solid white; border-radius: 9px;">
+                                                <img src="{{ uploaded_asset(\App\Models\Brand::where('id',$brand_id)->first()->logo)}}" class="position-absolute img-fluid shadow-lg" alt="" style="top: -7rem; object-fit: cover; height: 10rem; left: 1.5rem; border: 5px solid white; border-radius: 9px;">
                                             @endif
                                         </div>
 
