@@ -8,7 +8,7 @@
 
     <section class="author_page">
         <div class="container-fluid p-0">
-            <img src="{{ uploaded_asset($author->cover_photo)}}" alt="" class="img-fluid w-100">
+            <img src="{{ uploaded_asset($author->cover_photo)}}" alt="" class="img-fluid w-100" style="object-fit:cover; height: 30rem;">
         </div>
 
 
