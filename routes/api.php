@@ -310,3 +310,6 @@ Route::fallback(function() {
         'message' => 'Invalid Route'
     ]);
 });
+
+
+Route::get('/author-page/my-books/{id}','AuthorController@author_page_my_books')->name('author_page_my_books');
