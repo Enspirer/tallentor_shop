@@ -158,7 +158,7 @@
                                 <div class="col-sm-10">
                                     <div class="fs-20 opacity-60">
                                         @if(\App\Models\Author::where('id',$detailedProduct->author_id)->first())
-                                                <a href="">{{\App\Models\Author::where('id',$detailedProduct->author_id)->first()->author_name}}</a>
+                                                <a href="{{ route('author_page', $detailedProduct->author_id) }}">{{\App\Models\Author::where('id',$detailedProduct->author_id)->first()->author_name}}</a>
 
                                         @else
 

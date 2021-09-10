@@ -933,7 +933,7 @@ if (!function_exists('uploaded_asset')) {
         if (($asset = \App\Upload::find($id)) != null) {
             return my_asset($asset->file_name);
         }
-        return url('/').'/assets/img/t-2.jpg';
+        return url('/').'/assets/img/no-image.jpg';
     }
 }
 
