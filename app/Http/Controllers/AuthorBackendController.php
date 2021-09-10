@@ -92,31 +92,31 @@ class AuthorBackendController extends Controller
     
     public function writing_edit($id)
     {
+        // dd($id);
         $my_writings = MyWritings::find($id);
         
-        return view('frontend.user.author.author_writings_edit', compact('my_writings'));
+        return view('backend.author.writings_edit', compact('my_writings'));
     }
 
     public function writing_update(Request $request, $id)
     {    
         // dd($request);
 
-        $author_details = Author::where('user_id',auth()->user()->id)->first();
+        $my_writings = MyWritings::where('id',$id)->first();
+
+        $author_id = Author::where('id',$my_writings->author_id)->first();
 
         $update = MyWritings::find($id);
 
         $update->title = $request->title;
         $update->post = $request->post;
-        $update->discount = $request->discount;       
-        $update->status = 'Pending';
+        $update->discount = $request->discount; 
         $update->feature_image = $request->feature_image;
-        $update->author_id = $author_details->id;
-        $update->user_id = auth()->user()->id; 
-        
+        $update->status = $request->status;
         $update->save();
 
         flash(translate('Updated Successfully'))->success();
-        return redirect()->route('author_writings');
+        return redirect()->route('admin.author_writings_backend',$author_id->id);
     }
 
     public function writing_destroy($id)
