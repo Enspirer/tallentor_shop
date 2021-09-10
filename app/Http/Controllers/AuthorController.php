@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\MyBooks;
 use App\Product;
 use App\Models\MyWritings;
+use App\Models\Followers;
 
 class AuthorController extends Controller
 {
@@ -237,15 +238,63 @@ class AuthorController extends Controller
 
     // *****************************************  My Book End ******************************************
 
-
-
+        
     public function author_page($id) {
 
         $author = Author::where('id', $id)->first();
 
-        $books = Product::where('author_id', $id)->orderBy('id', 'desc')->get();
+        $my_books = MyBooks::where('author_id', $id)->orderBy('id', 'desc')->get();
 
 
-        return view('frontend.author_page', ['author' => $author, 'books' => $books]);
+        return view('frontend.author_page', ['author' => $author, 'my_books' => $my_books]);
+    }
+
+    public function author_page_my_books($id) {
+        
+        $my_books = MyBooks::where('id', $id)->first();
+
+        $upload = Upload::where('id', $my_books->book_image)->first();
+
+        $arr = [
+            'book_image' => url('').'/'.$upload->file_name,
+            'book_title' => $my_books->book_title,
+            'book_description' => $my_books->book_description,
+            'search_store_link' => $my_books->search_store_link
+        ];
+
+        $array = json_encode($arr);
+
+        return $array;
+    }
+
+
+    public function favoriteHeart(Request $request) {
+
+        $author_id = $request->hid_id;
+        $status = $request->favorite;
+        $user_id = auth()->user()->id;
+
+
+        if($status == 'non-favorite') {
+
+            $followers = new Followers;
+
+            $followers->author_id = $author_id; 
+
+            $followers->user_id = $user_id;
+
+            $followers -> save();
+
+            return back();
+        }
+
+        if($status == 'favorite') {
+
+            $followers = Followers::where('user_id', $user_id)
+            ->where('author_id', $author_id)
+            ->delete();
+
+            return back();
+        }
     }
 }

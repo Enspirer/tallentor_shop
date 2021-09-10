@@ -23,6 +23,7 @@ use Twilio\Rest\Client;
 use App\Wallet;
 use App\Order;
 use App\User;
+use App\Models\Followers;
 
 //highlights the selected navigation on admin panel
 if (! function_exists('sendSMS')) {
@@ -1132,6 +1133,28 @@ if (!function_exists('get_images_path')) {
 
         return $paths;
 
+    }
+}
+
+
+if (! function_exists('is_favorite')) {
+    /**
+     * Return the route to the "home" page depending on authentication/authorization status.
+     *
+     * @return string
+     */
+    function is_favorite($author_id, $user_id)
+    {
+
+        $follower = Followers::where('user_id', $user_id )
+            ->where('author_id',$author_id)
+            ->first();
+        if($follower)
+        {
+            return $follower;
+        }else{
+            return null;
+        }
     }
 }
 
