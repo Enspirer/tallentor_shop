@@ -75,6 +75,10 @@
                             </li>
                         @else
                             <li class="list-inline-item mr-3">
+                                <a href="{{ route('author_followers.index') }}" class="text-reset py-2 d-inline-block opacity-60">{{ translate('Following Authors')}}<span class="badge badge-secondary badge-inline badge-pill ml-1">{{ count(App\Models\Followers::where('user_id',auth()->user()->id)->get()) }}</span></a>
+                            </li>
+
+                            <li class="list-inline-item mr-3">
                                 <a href="{{ route('dashboard') }}" class="text-reset py-2 d-inline-block opacity-60">{{ translate('My Panel')}}</a>
                             </li>
                         @endif

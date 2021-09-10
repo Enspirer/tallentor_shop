@@ -366,3 +366,11 @@ Route::get('book_finder_request/index', 'BookFinderRequestController@user_index'
 Route::get('/book_finder_request/destroy/{id}', 'BookFinderRequestController@user_destroy')->name('book_finder_request.destroy');
 Route::get('/book_finder_request/edit/{id}', 'BookFinderRequestController@user_edit')->name('book_finder_request.edit');
 Route::post('/book_finder_request/user_update/{id}', 'BookFinderRequestController@user_update')->name('book_finder_request.user_update');
+
+//Author Followers
+
+Route::get('author_followers/index', 'FollowersController@index')->name('author_followers.index');
+Route::get('/author_followers/destroy/{id}', 'FollowersController@destroy')->name('author_followers.destroy');
+
+
+
