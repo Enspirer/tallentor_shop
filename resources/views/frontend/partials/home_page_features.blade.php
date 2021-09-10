@@ -60,6 +60,14 @@
                                             {{ translate('Ask the Book Finder') }}
                                         </h2>
                                         <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
+                                        
+                                        @auth
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                                Click Here
+                                            </button>
+                                        @else
+                                            <a href="{{ route('user.login') }}" type="button" class="btn btn-primary">{{ translate('Click Here')}}</a>                                                
+                                        @endauth
                                     </div>
                                 </div>
                             </figcaption>
@@ -173,3 +181,67 @@
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+        <form action="{{ route('book_finder_request.store') }}" method="post">
+        {{csrf_field()}}
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Book Finder Request</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">
+                        {{translate('Book Name :')}}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-md-9">
+                        <input type="text" id="book_name" name="book_name" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">
+                        {{translate('Author Name :')}}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-md-9">
+                        <input type="text" id="author_name" name="author_name" class="form-control" required>
+                    </div>
+                </div> 
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">
+                        {{translate('Publisher Name :')}}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-md-9">
+                        <input type="text" id="publisher_name" name="publisher_name" class="form-control" required>
+                    </div>
+                </div> 
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">
+                        {{translate('Book Type :')}}
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-md-9">
+                        <input type="text" id="book_type" name="book_type" class="form-control" required>
+                    </div>
+                </div>  
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Send Request</button>
+            </div>
+        </form>  
+    </div>
+  </div>
+</div>
+   

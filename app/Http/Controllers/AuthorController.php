@@ -67,23 +67,26 @@ class AuthorController extends Controller
 
     public function my_books(Request $request)
     {
+
+        $author_details = Author::where('user_id',auth()->user()->id)->first();
+        
         $sort_search = null;
-        $my_books = MyBooks::orderBy('order', 'desc');
+        $my_books = MyBooks::where('author_id',$author_details->id)->orderBy('order', 'desc');
 
         if ($request->search != null){
 
             // dd($request->search);
             
             $sort_search = $request->search;
-            $my_books = $my_books->where('book_title', 'like', '%'.$sort_search.'%');
+            $my_books = $my_books->where('book_title', 'like', '%'.$sort_search.'%')->where('author_id',$author_details->id);
 
-            dd($my_books);
+            // dd($my_books);
             
         }        
         // dd($my_books);
         $my_books = $my_books->paginate(15);
 
-        return view('frontend.user.author.my_bookings',compact('my_books','sort_search'));
+        return view('frontend.user.author.my_bookings',compact('my_books','sort_search','author_details'));
     }
 
     public function create(Request $request)

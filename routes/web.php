@@ -167,6 +167,7 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
     Route::get('/author-settings','AuthorController@author_settings')->name('author_settings');
     Route::get('/author-writings','AuthorController@author_writings')->name('author_writings');
 
+    // ************ my books start ********************
 
     Route::get('/my-books','AuthorController@my_books')->name('my_books');
     Route::get('/my-books/create','AuthorController@create')->name('my_books.create');
@@ -175,6 +176,7 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
     Route::post('/my-books/update/{id}', 'AuthorController@update')->name('my_books.update');
     Route::get('/my-books/destroy/{id}', 'AuthorController@destroy')->name('my_books.destroy');
 
+    // ************ my books end ********************
 
     Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
     Route::get('/profile', 'HomeController@profile')->name('profile');
@@ -355,3 +357,12 @@ Route::get('/{slug}', 'PageController@show_custom_page')->name('custom-pages.sho
 //Author Section
 Route::post('/author/update/{id}', 'AuthorBackendController@update')->name('author.update');
 Route::post('/author_request/update/{id}', 'AuthorRequestBackendController@update')->name('author_request.update');
+
+//Book Finder Section
+Route::post('/book_finder_request/update/{id}', 'BookFinderRequestController@update')->name('book_finder_request.update');
+
+Route::post('/book_finder_request/store', 'BookFinderRequestController@store')->name('book_finder_request.store');
+Route::get('book_finder_request/index', 'BookFinderRequestController@user_index')->name('book_finder_request.index');
+Route::get('/book_finder_request/destroy/{id}', 'BookFinderRequestController@user_destroy')->name('book_finder_request.destroy');
+Route::get('/book_finder_request/edit/{id}', 'BookFinderRequestController@user_edit')->name('book_finder_request.edit');
+Route::post('/book_finder_request/user_update/{id}', 'BookFinderRequestController@user_update')->name('book_finder_request.user_update');

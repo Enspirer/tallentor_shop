@@ -20,6 +20,17 @@
       </div>
     </div>
 
+    @if($author_details->status == 'Pending')
+        <div class="row gutters-10 justify-content-center">
+            <div class="col-md-12 mx-auto mb-3">
+                <div class="p-3 rounded mb-3 text-center bg-white shadow-sm hov-shadow-lg has-transition">
+                    <h5 style="color:red;">Waiting for Admin Approval</h5>
+                </div>
+            </div>
+        </div> 
+    @endif
+    
+
     <div class="row gutters-10 justify-content-center">
         <div class="col-md-4 mx-auto mb-3" >
             <a href="{{ route('my_books.create')}}">
@@ -71,11 +82,15 @@
                            
                             <td>{{$my_book->id}}</td>
                             <td>
-                                <div class="row">
-                                    <div class="col-auto">
-                                        <img src="{{ uploaded_asset($my_book->book_image)}}" alt="Image" class="size-60px img-fit">
-                                    </div>                                
-                                </div>
+                                @if($my_book->book_image == null)
+                                    <p>No Image</p>
+                                @else
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <img src="{{ uploaded_asset($my_book->book_image)}}" alt="Image" class="size-60px img-fit">
+                                        </div>                                
+                                    </div>
+                                @endif                                
                             </td>
                             <td>{{$my_book->book_title}}</td>
                             <td>{{$my_book->order}}</td>

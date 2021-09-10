@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Author;
+use App\Models\MyBooks;
+
 
 class AuthorBackendController extends Controller
 {
@@ -72,5 +74,67 @@ class AuthorBackendController extends Controller
         flash(translate('Author has been deleted successfully'))->success();
         return back();
     }
+
+
+    // *********************** book section ******************************************
+
+    public function books_index(Request $request, $id)
+    {
+
+        // dd($request);
+        // dd($id);
+
+        $my_books = MyBooks::orderBy('id', 'desc')->where('author_id',$id)->paginate(15);
+
+        return view('backend.author.books',compact('my_books'));
+    }
+
+    public function books_edit($id)
+    {
+        
+        $my_books = MyBooks::where('id',$id)->first();
+        // dd($my_books);
+        
+        return view('backend.author.books_edit', compact('my_books'));
+    }
+
+    public function books_update(Request $request, $id)
+    {    
+
+        $my_book = MyBooks::where('id',$id)->first();
+
+        $author_id = Author::where('id',$my_book->author_id)->first();
+        
+        $update = MyBooks::find($id);
+
+        $update->book_title = $request->title;
+        $update->book_description = $request->description;
+        $update->search_store_link = $request->search_store_link; 
+        $update->order = $request->order;
+        $update->book_image = $request->book_image;
+        $update->status = $request->status;
+        
+        $update->save();
+
+        
+
+        flash(translate('Updated Successfully'))->success();
+        return redirect()->route('admin.books',$author_id->id);
+    }
+
+    public function books_destroy($id)
+    {
+        $my_books = MyBooks::findOrFail($id);
+        $my_books->delete();
+
+        MyBooks::destroy($id);
+
+        flash(translate('Deleted Successfully'))->success();
+        return back();
+    }
+
+
+
+
 
 }
