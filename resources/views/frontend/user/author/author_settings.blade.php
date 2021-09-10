@@ -108,6 +108,25 @@
                                 </div>
                             </div>
                         </div><br>
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label>Facebook<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control mb-3" placeholder="Facebook Link" name="facebook_link" value="{{$author_details->facebook_link}}">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label>Twitter<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control mb-3" placeholder="Twitter Link" name="twitter_link" value="{{$author_details->twitter_link}}">
+                            </div>
+                        </div>
+
                     </div>
                     <div class="text-right mt-4">
                         <button type="submit" class="btn btn-primary">Save</button>
