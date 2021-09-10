@@ -44,6 +44,8 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request);
         $brand = new Brand;
         $brand->name = $request->name;
         $brand->meta_title = $request->meta_title;
@@ -56,6 +58,7 @@ class BrandController extends Controller
         }
 
         $brand->logo = $request->logo;
+        $brand->cover_photo = $request->cover_photo;
         $brand->save();
 
         $brand_translation = BrandTranslation::firstOrNew(['lang' => env('DEFAULT_LANGUAGE'), 'brand_id' => $brand->id]);

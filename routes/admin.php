@@ -23,6 +23,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::get('/author/destroy/{id}', 'AuthorBackendController@destroy')->name('author.destroy');
     Route::get('/author/admin/edit/{id}', 'AuthorBackendController@edit')->name('author.edit');
 
+   
+    Route::get('/author_writings_backend/{id}','AuthorBackendController@author_writings')->name('admin.author_writings_backend');
+    Route::get('/author_writings_backend/edit/{id}', 'AuthorBackendController@writing_edit')->name('author_writings_backend.edit');
+    Route::post('/author_writings_backend/update/{id}', 'AuthorBackendController@writing_update')->name('author_writings_backend.update');
+    Route::get('/author_writings_backend/destroy/{id}', 'AuthorBackendController@writing_destroy')->name('author_writings_backend.destroy');
+
+
     Route::get('/books/{id}', 'AuthorBackendController@books_index')->name('admin.books');    
     Route::get('/books/edit/{id}', 'AuthorBackendController@books_edit')->name('books.edit');
     Route::post('/books/update/{id}', 'AuthorBackendController@books_update')->name('books.update');  

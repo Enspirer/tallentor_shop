@@ -84,6 +84,18 @@
 						</div>
 					</div>
 					<div class="form-group mb-3">
+						<label for="name">{{translate('Cover Photo')}} </label>
+						<div class="input-group" data-toggle="aizuploader" data-type="image">
+							<div class="input-group-prepend">
+									<div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
+							</div>
+							<div class="form-control file-amount">{{ translate('Choose File') }}</div>
+							<input type="hidden" name="cover_photo" class="selected-files">
+						</div>
+						<div class="file-preview box sm">
+						</div>
+					</div>
+					<div class="form-group mb-3">
 						<label for="name">{{translate('Meta Title')}}</label>
 						<input type="text" class="form-control" name="meta_title" placeholder="{{translate('Meta Title')}}">
 					</div>

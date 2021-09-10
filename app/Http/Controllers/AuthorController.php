@@ -6,6 +6,7 @@ use App\Models\Author;
 use Illuminate\Http\Request;
 use App\Models\MyBooks;
 use App\Product;
+use App\Models\MyWritings;
 
 class AuthorController extends Controller
 {
@@ -57,10 +58,88 @@ class AuthorController extends Controller
         ]);
     }
 
+    // ******************************* Author Writing Start*********************************************
+
     public function author_writings()
     {
-        return view('frontend.user.author.author_writings');
+        $author_details = Author::where('user_id',auth()->user()->id)->first();
+     
+        $my_writings = MyWritings::where('author_id',$author_details->id)->orderBy('id', 'desc')->paginate(15);
+
+        // dd($my_writings);
+ 
+
+        return view('frontend.user.author.author_writings',compact('my_writings','author_details'));
     }
+
+    public function writing_create(Request $request)
+    {        
+        return view('frontend.user.author.author_writings_create');
+    }
+
+    public function writing_store(Request $request)
+    {    
+        // dd($request);
+
+        $author_details = Author::where('user_id',auth()->user()->id)->first();
+
+        $add = new MyWritings;
+
+        $add->title = $request->title;
+        $add->post = $request->post;
+        $add->discount = $request->discount;       
+        $add->status = 'Pending';
+        $add->feature_image = $request->feature_image;
+        $add->author_id = $author_details->id;
+        $add->user_id = auth()->user()->id; 
+        
+        $add->save();
+
+        flash(translate('Added Successfully'))->success();
+        return redirect()->route('author_writings');
+    }
+
+    public function writing_edit($id)
+    {
+        $my_writings = MyWritings::find($id);
+        
+        return view('frontend.user.author.author_writings_edit', compact('my_writings'));
+    }
+
+    public function writing_update(Request $request, $id)
+    {    
+        // dd($request);
+
+        $author_details = Author::where('user_id',auth()->user()->id)->first();
+
+        $update = MyWritings::find($id);
+
+        $update->title = $request->title;
+        $update->post = $request->post;
+        $update->discount = $request->discount;       
+        $update->status = 'Pending';
+        $update->feature_image = $request->feature_image;
+        $update->author_id = $author_details->id;
+        $update->user_id = auth()->user()->id; 
+        
+        $update->save();
+
+        flash(translate('Updated Successfully'))->success();
+        return redirect()->route('author_writings');
+    }
+
+    public function writing_destroy($id)
+    {
+        $my_writing = MyWritings::findOrFail($id);
+        $my_writing->delete();
+
+        MyWritings::destroy($id);
+
+        flash(translate('Deleted Successfully'))->success();
+        return back();
+    }
+
+// ************************************** Author Writing End*********************************************
 
 
 // *****************************************  My Book start ******************************************

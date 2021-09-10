@@ -89,9 +89,13 @@
                         <td>{{$author->status}}</td>
 
                         <td class="text-right">
-                                    
+                               
+                            
                             <a class="btn btn-soft-success btn-icon btn-circle btn-sm" href="{{route('admin.books', ['id'=>$author->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Books') }}">
                                 <i class="las la-book"></i>
+                            </a>
+                            <a class="btn btn-soft-warning btn-icon btn-circle btn-sm" href="{{route('admin.author_writings_backend', ['id'=>$author->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Posts') }}">
+                                <i class="las la-newspaper"></i>
                             </a>
                             <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('author.edit', ['id'=>$author->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
                                 <i class="las la-edit"></i>
