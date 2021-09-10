@@ -40,7 +40,7 @@
                                             {{ translate('Shop by Category') }}
                                         </h2>
                                         <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
-                                        <a href="{{ route('category.all') }}" class="btn btn-primary">View Categories/a>
+                                        <a href="{{ route('categories.all') }}" class="btn btn-primary">View Categories</a>
                                     </div>
                                 </div>
                             </figcaption>
