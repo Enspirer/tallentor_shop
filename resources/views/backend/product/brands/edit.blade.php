@@ -44,6 +44,20 @@
                     </div>
                 </div>
                 <div class="form-group row">
+					<label class="col-md-3 col-form-label" for="signinSrEmail">{{translate('Cover Photo')}} </label>
+					<div class="col-md-9">
+                        <div class="input-group" data-toggle="aizuploader" data-type="image">
+                            <div class="input-group-prepend">
+                                    <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
+                            </div>
+                            <div class="form-control file-amount">{{ translate('Choose File') }}</div>
+                            <input type="hidden" name="cover_photo" value="{{ $brand->cover_photo }}" class="selected-files">
+                        </div>
+                        <div class="file-preview box sm">
+                        </div>
+                    </div>
+				</div>
+                <div class="form-group row">
                     <label class="col-sm-3 col-from-label">{{translate('Meta Title')}}</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" name="meta_title" value="{{ $brand->meta_title }}" placeholder="{{translate('Meta Title')}}">

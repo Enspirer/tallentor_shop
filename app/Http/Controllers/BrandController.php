@@ -115,7 +115,8 @@ class BrandController extends Controller
         else {
             $brand->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.Str::random(5);
         }
-        $brand->logo = $request->logo;
+        $brand->logo = $request->logo;        
+        $brand->cover_photo = $request->cover_photo;
         $brand->save();
 
         $brand_translation = BrandTranslation::firstOrNew(['lang' => $request->lang, 'brand_id' => $brand->id]);
