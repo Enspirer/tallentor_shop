@@ -166,11 +166,98 @@
                                     </div>
                                 </div>
                             </div>
+  
+                            <hr>
                             @else
 
                             @endif
 
-                            <hr>
+                            
+
+                            <!-- ISBN -->
+                            @if($detailedProduct->isbn != null)
+
+                                <div class="row no-gutters">
+                                        <div class="col-sm-2">
+                                            <div class="opacity-50 my-2">{{ translate('ISBN')}}:</div>
+                                        </div>
+
+                                        <div class="col-sm-10">
+                                            <div class="my-2">
+                                                <strong class="h6 fw-500">
+                                                    {{ $detailedProduct->isbn }}
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+                            @endif
+
+                            <!-- Pages -->
+                            @if($detailedProduct->pages != null)
+
+                                <div class="row no-gutters">
+                                        <div class="col-sm-2">
+                                            <div class="opacity-50 my-2">{{ translate('Pages')}}:</div>
+                                        </div>
+
+                                        <div class="col-sm-10">
+                                            <div class="my-2">
+                                                <strong class="h6 fw-500">
+                                                    {{ $detailedProduct->pages }}
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+                            @endif
+
+                            <!-- Binding -->
+                            @if($detailedProduct->binding != null)
+
+                                <div class="row no-gutters">
+                                        <div class="col-sm-2">
+                                            <div class="opacity-50 my-2">{{ translate('Binding')}}:</div>
+                                        </div>
+
+                                        <div class="col-sm-10">
+                                            <div class="my-2">
+                                                <strong class="h6 fw-500">
+                                                    {{ $detailedProduct->binding }}
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+                            @endif
+
+                            <!-- Released Date -->
+                            @if($detailedProduct->realsed_date != null)
+
+                                <div class="row no-gutters">
+                                        <div class="col-sm-2">
+                                            <div class="opacity-50 my-2">{{ translate('Released Date')}}:</div>
+                                        </div>
+
+                                        <div class="col-sm-10">
+                                            <div class="my-2">
+                                                <strong class="h6 fw-500">
+                                                    {{ $detailedProduct->realsed_date }}
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+                            @endif
+
 
                             @if(home_price($detailedProduct) != home_discounted_price($detailedProduct))
 

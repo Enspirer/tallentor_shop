@@ -193,6 +193,52 @@
               <a href="{{ route('profile') }}" class="btn btn-soft-primary">{{ translate('Configure Now')}}</a>
           </div>
       </div>
+
+      <div class="col-md-8" style="margin-top:-60px;">
+          <div class="card">
+              <div class="card-header">
+                  <h6 class="mb-0">{{ translate('My Writings') }}</h6>
+              </div>
+    		          <div class="card-body">
+                <table class="table aiz-table mb-0">
+                  <thead>
+                      <tr>
+                          <th>{{ translate('Feature Image')}}</th>
+                          <th>{{ translate('Title')}}</th>
+                          <th>{{ translate('Status')}}</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    @foreach (\App\Models\MyWritings::where('user_id',auth()->user()->id)->orderBy('id', 'desc')->take(2)->get() as $key => $my_writings)
+                        @if(count(array($my_writings))>0)
+                          <tr>
+                                <td>
+                                    @if($my_writings->feature_image == null)
+                                        <p>No Image</p>
+                                    @else
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <img src="{{ uploaded_asset($my_writings->feature_image)}}" alt="Image" class="size-60px img-fit">
+                                            </div>                                
+                                        </div>
+                                    @endif                                
+                                </td>
+                                <td>{{ $my_writings->title }}</td>
+                                <td>{{ $my_writings->status }}</td>
+                          </tr>
+                      @endif
+                  @endforeach
+                </table>
+                <br>
+                <div class="text-center">
+                    <a href="{{ route('author_writings.create')}}" class="btn btn-primary d-inline-block">{{ translate('Create New Post')}}</a>
+                </div>
+              </div>
+          </div>
+      </div>
+
     </div>
 
+
+    
 @endsection
