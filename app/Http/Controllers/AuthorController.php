@@ -6,6 +6,7 @@ use App\Models\Author;
 use Illuminate\Http\Request;
 use App\Models\MyBooks;
 use App\Product;
+use App\Upload;
 use App\Models\MyWritings;
 use App\Models\Followers;
 
