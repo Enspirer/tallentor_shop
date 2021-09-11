@@ -6,6 +6,7 @@ use App\Models\Author;
 use Illuminate\Http\Request;
 use App\Models\MyBooks;
 use App\Product;
+use App\Upload;
 use App\Models\MyWritings;
 use App\Models\Followers;
 
@@ -245,8 +246,9 @@ class AuthorController extends Controller
 
         $my_books = MyBooks::where('author_id', $id)->orderBy('id', 'desc')->get();
 
+        $my_writings = MyWritings::where('author_id', $id)->where('status', 'Approved')->orderBy('id', 'desc')->paginate(1);
 
-        return view('frontend.author_page', ['author' => $author, 'my_books' => $my_books]);
+        return view('frontend.author_page', ['author' => $author, 'my_books' => $my_books, 'my_writings' => $my_writings]);
     }
 
     public function author_page_my_books($id) {

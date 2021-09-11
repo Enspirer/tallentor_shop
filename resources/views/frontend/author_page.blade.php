@@ -121,56 +121,32 @@
                             <p class="mt-3 mb-0" style="text-align:justify;">{{ $author->author_description }}</p>
                         </div>
                         <div class="tab-pane fade" id="writings" role="tabpanel" aria-labelledby="writings-tab">
-                            <div class="row mt-3 border mx-0 py-2 rounded shadow-lg mb-4">
-                                <div class="col-6">
-                                    <img src="{{ url('uploads/all/0NYgtRkBZtZWV7kOoCXj3gWJq0Som2WRLj9tUj0r.jpg') }}" alt="" class="img-fluid" style="object-fit: cover;">
-                                </div>
-                                <div class="col-6">
-                                    <h5 class="font-weight-bold">Ninja Guy</h5>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis tempora aut assumenda repudiandae. Molestias earum veniam voluptates itaque, aspernatur, asperiores nisi numquam cupiditate, sit animi quia assumenda nostrum! Voluptate veritatis dolor officiis quod natus optio sit explicabo iusto beatae sapiente. Molestiae obcaecati voluptates laborum animi eaque architecto tempora ullam ratione.</p>
+                            @foreach($my_writings as $my_writing)
+                                <div class="row mt-3 border mx-0 py-2 rounded shadow-lg mb-4">
+                                    <div class="col-6">
+                                        <img src="{{ uploaded_asset($my_writing->feature_image)}}" alt="" class="img-fluid" style="object-fit: cover;">
+                                    </div>
+                                    <div class="col-6">
+                                        <h5 class="font-weight-bold">{{ $my_writing->title }}</h5>
+                                        <p style="font-size: 0.8rem; text-align: justify; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 10; -webkit-box-orient: vertical;">{{ $my_writing->post }}</p>
 
-                                    <div class="row justify-content-end">
-                                        <div class="col-4 text-end">
-                                            <button class="btn btn-primary">View More</button>
+                                        <div class="row justify-content-end">
+                                            <div class="col-4 text-end">
+                                                <button class="btn btn-primary">View More</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                
+                            @endforeach
+
+                            <div class="aiz-pagination">
+                                {{ $my_writings->links() }}
                             </div>
-
-                            <div class="row mt-3 border mx-0 py-2 rounded shadow-lg mb-4">
-                                <div class="col-6">
-                                    <img src="{{ url('uploads/all/0NYgtRkBZtZWV7kOoCXj3gWJq0Som2WRLj9tUj0r.jpg') }}" alt="" class="img-fluid" style="object-fit: cover;">
-                                </div>
-                                <div class="col-6">
-                                    <h5 class="font-weight-bold">Ninja Guy</h5>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis tempora aut assumenda repudiandae. Molestias earum veniam voluptates itaque, aspernatur, asperiores nisi numquam cupiditate, sit animi quia assumenda nostrum! Voluptate veritatis dolor officiis quod natus optio sit explicabo iusto beatae sapiente. Molestiae obcaecati voluptates laborum animi eaque architecto tempora ullam ratione.</p>
-
-                                    <div class="row justify-content-end">
-                                        <div class="col-4 text-end">
-                                            <button class="btn btn-primary">View More</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mt-3 border mx-0 py-2 rounded shadow-lg mb-4">
-                                <div class="col-6">
-                                    <img src="{{ url('uploads/all/0NYgtRkBZtZWV7kOoCXj3gWJq0Som2WRLj9tUj0r.jpg') }}" alt="" class="img-fluid" style="object-fit: cover;">
-                                </div>
-                                <div class="col-6">
-                                    <h5 class="font-weight-bold">Ninja Guy</h5>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis tempora aut assumenda repudiandae. Molestias earum veniam voluptates itaque, aspernatur, asperiores nisi numquam cupiditate, sit animi quia assumenda nostrum! Voluptate veritatis dolor officiis quod natus optio sit explicabo iusto beatae sapiente. Molestiae obcaecati voluptates laborum animi eaque architecto tempora ullam ratione.</p>
-
-                                    <div class="row justify-content-end">
-                                        <div class="col-4 text-end">
-                                            <button class="btn btn-primary">View More</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -279,4 +255,5 @@
         }
     });
 </script>
+
 @endpush
