@@ -248,6 +248,15 @@
                                     </select>
                                 </div>
                                 <div class="form-group w-200px ml-0 ml-xl-3">
+                                    <label class="mb-0 opacity-50">{{ translate('Author')}}</label>
+                                    <select class="form-control form-control-sm aiz-selectpicker" data-live-search="true" name="author" onchange="filter()">
+                                        <option value="">{{ translate('All Author')}}</option>
+                                        @foreach (\App\Models\Author::all() as $author)
+                                            <option value="{{ $author->slug }}" @isset($author_id) @if ($author_id == $author->id) selected @endif @endisset>{{ $author->author_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group w-200px ml-0 ml-xl-3">
                                     <label class="mb-0 opacity-50">{{ translate('Sort by')}}</label>
                                     <select class="form-control form-control-sm aiz-selectpicker" name="sort_by" onchange="filter()">
                                         <option value="newest" @isset($sort_by) @if ($sort_by == 'newest') selected @endif @endisset>{{ translate('Newest')}}</option>
@@ -266,8 +275,39 @@
                         <input type="hidden" name="min_price" value="">
                         <input type="hidden" name="max_price" value="">
 
+                        
+                        @if($brand_id && $author_id)
+                        
+                            <section class="author_page">
+                                <div class="container-fluid p-0">
+                                    @if(\App\Models\Author::where('id',$author_id)->first()->cover_photo != null)
+                                        <img src="{{ uploaded_asset(\App\Models\Author::where('id',$author_id)->first()->cover_photo)}}" alt="" class="img-fluid w-100" style="object-fit:cover; height: 20rem;">
+                                    @else
+                                        <img src="{{ uploaded_asset(\App\Models\Author::where('id',$author_id)->first()->cover_photo)}}" alt="" class="img-fluid w-100" style="object-fit:cover; height: 20rem; border: 3px solid white; border-radius: 10px;">   
+                                    @endif    
+                                </div>
+                                <div class="container position-relative">
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-2 profile-img">
+                                            @if(\App\Models\Author::where('id',$author_id)->first()->profile_picture != null)
+                                                <img src="{{ uploaded_asset(\App\Models\Author::where('id',$author_id)->first()->profile_picture)}}" class="position-absolute img-fluid shadow-lg" alt="" style="top: -7rem; object-fit: cover; height: 10rem; left: 1.5rem; border: 5px solid white; border-radius: 9px;">
+                                            @else
+                                                <img src="{{ uploaded_asset(\App\Models\Author::where('id',$author_id)->first()->profile_picture)}}" class="position-absolute img-fluid shadow-lg" alt="" style="top: -7rem; object-fit: cover; height: 10rem; left: 1.5rem; border: 5px solid white; border-radius: 9px;">
+                                            @endif
+                                        </div>
 
-                        @if($brand_id)
+                                        <div class="col-sm-6 profile-name" style="padding-left: 2rem; padding-top: 1rem;">
+                                            <h3 class="font-weight-bold mb-0">{{ \App\Models\Author::where('id',$author_id)->first()->author_name }}</h3>
+                                        </div>
+                                        <div class="col-sm-4 profile-name" style="padding-left: 1rem; padding-top: 1rem;">
+                                            <h4 class="font-weight-bold mb-0">{{ \App\Brand::where('id',$brand_id)->first()->name }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section> <br><br><br>
+
+                        @elseif($brand_id && $author_id == null)   
+                        
                             <section class="author_page">
                                 <div class="container-fluid p-0">
                                     @if(\App\Models\Brand::where('id',$brand_id)->first()->cover_photo != null)
@@ -286,19 +326,80 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-sm-9 profile-name" style="padding-left: 4rem;">
+                                        <div class="col-sm-9 profile-name" style="padding-left: 3rem; padding-top: 1rem;">
                                             <h3 class="font-weight-bold mb-0">{{ \App\Models\Brand::where('id',$brand_id)->first()->name }}</h3>
                                         </div>
                                     </div>
                                 </div>
                             </section> <br><br><br>
 
-                        @else
+                        @elseif($brand_id == null && $author_id)    
 
+                            <section class="author_page">
+                                <div class="container-fluid p-0">
+                                    @if(\App\Models\Author::where('id',$author_id)->first()->cover_photo != null)
+                                        <img src="{{ uploaded_asset(\App\Models\Author::where('id',$author_id)->first()->cover_photo)}}" alt="" class="img-fluid w-100" style="object-fit:cover; height: 20rem;">
+                                    @else
+                                        <img src="{{ uploaded_asset(\App\Models\Author::where('id',$author_id)->first()->cover_photo)}}" alt="" class="img-fluid w-100" style="object-fit:cover; height: 20rem; border: 3px solid white; border-radius: 10px;">   
+                                    @endif    
+                                </div>
+                                <div class="container position-relative">
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-2 profile-img">
+                                            @if(\App\Models\Author::where('id',$author_id)->first()->profile_picture != null)
+                                                <img src="{{ uploaded_asset(\App\Models\Author::where('id',$author_id)->first()->profile_picture)}}" class="position-absolute img-fluid shadow-lg" alt="" style="top: -7rem; object-fit: cover; height: 10rem; left: 1.5rem; border: 5px solid white; border-radius: 9px;">
+                                            @else
+                                                <img src="{{ uploaded_asset(\App\Models\Author::where('id',$author_id)->first()->profile_picture)}}" class="position-absolute img-fluid shadow-lg" alt="" style="top: -7rem; object-fit: cover; height: 10rem; left: 1.5rem; border: 5px solid white; border-radius: 9px;">
+                                            @endif
+                                        </div>
 
+                                        <div class="col-sm-5 profile-name" style="padding-left: 3rem; padding-top: 1rem;">
+                                            <h3 class="font-weight-bold mb-0">{{ \App\Models\Author::where('id',$author_id)->first()->author_name }}</h3>
+                                        </div>
+                                        <div class="col-sm-5" style="padding: 1rem;">
+                                            <div class="row">
+
+                                                <div class="col-5">
+                                                    @if(App\Models\Author::where('id',$author_id)->first())                                                   
+                                                        <a class="btn shadow-lg bg-white" href="{{route('author_page', ['id'=>App\Models\Author::where('id',$author_id)->first()->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Author Profile') }}" style="border-radius: 0.8rem;">
+                                                            Author Profile
+                                                        </a>
+                                                    @endif
+                                                </div>
+                                                <div class="col-5">
+                                                    <span class="btn shadow-lg bg-white" style="border-radius: 0.8rem; cursor:auto;">{{ count(App\Models\Followers::where('author_id',$author_id)->get()) }} Followers</span>
+                                                </div>
+                                                <div class="col-2">
+                                                    
+                                                        @if(App\Models\Followers::where('user_id',auth()->user()->id)->first() == null)
+                                                            <div class="small-heart">
+                                                                <form  action="{{ route('favorite_heart') }}" enctype="multipart/form-data" method="POST">
+                                                                {{csrf_field()}}
+                                                                    <input type="hidden" class="author_id" name='hid_id' value="{{ $author_id }}">
+                                                                    <input type="hidden" class="favorite" name='favorite' value="favorite">
+                                                                    <button class="bi bi-heart border-0 shadow-lg px-3 py-1" style="border-radius: 0.8rem; font-size: 1.5rem; color: #FF6243; background-color: white" type="submit"></button>
+                                                                </form>
+                                                            </div>
+                                                        @else
+                                                            <div class="small-heart">
+                                                                <form action="{{ route('favorite_heart') }}" enctype="multipart/form-data" method="POST">
+                                                                {{csrf_field()}}
+                                                                    <input type="hidden" class="author_id" name='hid_id' value="{{ $author_id }}">
+                                                                    <input type="hidden" class="favorite" name='favorite' value="non-favorite">
+                                                                    <button class="bi bi-heart-fill border-0 shadow-lg px-3 py-1" style="border-radius: 0.8rem; font-size: 1.5rem; color: #FF6243; background-color: white" type="submit"></button>
+                                                                </form>
+                                                            </div>
+                                                        @endif                                                           
+                                                        
+                                                   
+                                                </div>
+                                        
+                                            </div>
+                                    </div>
+                                </div>
+                            </section> <br><br><br>
+                        
                         @endif
-
-
 
 
 

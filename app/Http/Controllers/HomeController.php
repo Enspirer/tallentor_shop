@@ -9,6 +9,7 @@ use Hash;
 use App\Category;
 use App\FlashDeal;
 use App\Brand;
+use App\Models\Author;
 use App\Product;
 use App\PickupPoint;
 use App\CustomerPackage;
@@ -429,7 +430,7 @@ class HomeController extends Controller
         abort(404);
     }
 
-    public function search(Request $request, $category_id = null, $brand_id = null)
+    public function search(Request $request, $category_id = null, $brand_id = null, $author_id = null)
     {
         $query = $request->q;
         $sort_by = $request->sort_by;
@@ -442,8 +443,18 @@ class HomeController extends Controller
         if($brand_id != null){
             $conditions = array_merge($conditions, ['brand_id' => $brand_id]);
         }elseif ($request->brand != null) {
+            // dd($request->brand);
             $brand_id = (Brand::where('slug', $request->brand)->first() != null) ? Brand::where('slug', $request->brand)->first()->id : null;
             $conditions = array_merge($conditions, ['brand_id' => $brand_id]);
+        }
+
+        if($author_id != null){
+            // dd($author_id);
+            $conditions = array_merge($conditions, ['author_id' => $author_id]);
+        }elseif ($request->author != null) {
+            // dd($request->author);
+            $author_id = (Author::where('slug', $request->author)->first() != null) ? Author::where('slug', $request->author)->first()->id : null;
+            $conditions = array_merge($conditions, ['author_id' => $author_id]);
         }
 
         if($seller_id != null){
@@ -571,7 +582,7 @@ class HomeController extends Controller
 
         $products = filter_products($products)->paginate(12)->appends(request()->query());
 
-        return view('frontend.product_listing', compact('products', 'query', 'category_id', 'brand_id', 'sort_by', 'seller_id','min_price', 'max_price', 'attributes', 'selected_attributes', 'all_colors', 'selected_color'));
+        return view('frontend.product_listing', compact('products', 'query', 'category_id', 'brand_id','author_id', 'sort_by', 'seller_id','min_price', 'max_price', 'attributes', 'selected_attributes', 'all_colors', 'selected_color'));
     }
 
     public function home_settings(Request $request)

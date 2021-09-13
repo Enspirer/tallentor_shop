@@ -272,6 +272,8 @@ class AuthorController extends Controller
 
     public function favoriteHeart(Request $request) {
 
+        dd($request);
+        
         $author_id = $request->hid_id;
         $status = $request->favorite;
         $user_id = auth()->user()->id;
