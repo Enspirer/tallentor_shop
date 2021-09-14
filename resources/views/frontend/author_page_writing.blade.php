@@ -26,7 +26,7 @@
                     @endif
                 </div>
 
-                <div class="col-sm-7 profile-name" style="padding-left: 3rem;">
+                <div class="col-sm-7 profile-name" style="padding-left: 4rem;">
                     <h3 class="font-weight-bold mb-0">{{ $author->author_name }}</h3>
                 </div>
 
@@ -58,11 +58,9 @@
                                 </div>
                             @endif
                         @else
-                            
                             <div class="col-3 small-heart">
-                                <a href="{{ route('user.login') }}" class="bi bi-heart border-0 shadow-lg px-3 py-1" title="{{ translate('You have to Login') }}" style="border-radius: 0.8rem; font-size: 1.5rem; color: #FF6243; background-color: white"></a>
+                                <a href="{{ route('user.login') }}" title="{{ translate('You have to Login') }}" class="bi bi-heart border-0 shadow-lg px-3 py-1" style="border-radius: 0.8rem; font-size: 1.5rem; color: #FF6243; background-color: white"></a>
                             </div>
-                            
                         @endauth
                     </div>
                 </div>
@@ -105,25 +103,45 @@
                     <!-- <h5 class="font-weight-bold">Bio</h5>
                     <hr class="m-0" style="height:2px; border-width:0; width: 5.5rem; background-color:#FF0000">
 
-                    <p class="mt-3 mb-0" style="text-align:justify;"></p> -->
+                    <p class="mt-3 mb-0" style="text-align:justify;">{{ $author->author_description }}</p> -->
 
                     
-                    <a href="{{ route('author_page',$author->id) }}" class="font-weight-bold mr-5 p-1" style="color:black; font-size:16px; border-bottom: 3px solid red;">Bio</a>
-                    <a href="{{ route('author_page_writing',$author->id) }}" class="font-weight-bold mr-5 p-0" style="color:black; font-size:16px;">My Writings</a>
+                    <a href="{{ route('author_page',$author->id) }}" class="font-weight-bold mr-5 p-0" style="color:black; font-size:16px;">Bio</a>
+                    <a href="{{ route('author_page_writing',$author->id) }}" class="font-weight-bold mr-5 p-1" style="color:black; font-size:16px; border-bottom: 3px solid red;">My Writings</a>
                     <a href="{{ route('author_page_follower',$author->id) }}" class="font-weight-bold mr-5 p-0" style="color:black; font-size:16px;">Followers</a>
                         
-                    @if( $author->author_description == null)
+                    @if(count($my_writings) == 0)
 
-                    <div style="margin-top: 50px;margin-bottom: 10px;">
-                        <div style="background-image: url('{{url('tag/notfound.jpg')}}');height: 100px;background-repeat: no-repeat;background-position: center;background-size: contain;"></div>
-                            <h3 style="text-align: center">No Any Description</h3>
-                    </div>
-
-                    @else
-                        <div>
-                            <h6 class="mt-4 mb-0" style="text-align:justify;">{{ $author->author_description }}</h6>
+                        <div style="margin-top: 50px;margin-bottom: 10px;">
+                            <div style="background-image: url('{{url('tag/notfound.jpg')}}');height: 100px;background-repeat: no-repeat;background-position: center;background-size: contain;"></div>
+                                <h3 style="text-align: center">No Any Writings</h3>
                         </div>
-                    @endif                      
+                    @else
+
+                        @foreach($my_writings as $my_writing)
+                            <div class="row mt-4 border mx-0 py-2 rounded shadow-lg mb-4">
+                                <div class="col-6">
+                                    <img src="{{ uploaded_asset($my_writing->feature_image)}}" alt="" class="img-fluid" style="object-fit: cover;">
+                                </div>
+                                <div class="col-6">
+                                    <h5 class="font-weight-bold">{{ $my_writing->title }}</h5>
+                                    <p style="font-size: 0.8rem; text-align: justify; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 10; -webkit-box-orient: vertical;">{!! $my_writing->post !!}</p>
+
+                                    <div class="row justify-content-end">
+                                        <div class="col-4 text-end">
+                                            <button class="btn btn-primary">View More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                                
+                        @endforeach
+
+                        <div class="aiz-pagination mt-4">
+                            {{ $my_writings->links() }}
+                        </div>
+
+                    @endif
+                      
                     
                 </div>
             </div>

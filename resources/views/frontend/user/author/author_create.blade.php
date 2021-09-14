@@ -1,6 +1,10 @@
 @extends('frontend.layouts.user_panel')
 
 @section('panel_content')
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    
+    
     <div class="aiz-user-panel">
         <div class="page-title">
             <div class="row align-items-center">
@@ -33,7 +37,8 @@
                                 <label>Your name <span class="text-danger">*</span></label>
                             </div>
                             <div class="col-md-10">
-                                <input type="text" class="form-control mb-3" placeholder="Your name" name="author_name" required="">
+                                <input type="text" class="form-control mb-3" placeholder="Your name" name="author_name" id="author_name" required="">
+                                <input type="hidden" class="form-control mb-3" name="slug" id="slug">
                             </div>
                         </div>
                         <div class="row">
@@ -109,5 +114,15 @@
 
     </div>
 
+<script>
+
+$("#author_name").keyup(function(){
+    var str = $(this).val();
+    var trims = $.trim(str)
+    var slug = trims.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
+    $("#slug").val(slug.toLowerCase()) 
+});    
+
+</script>
 
 @endsection

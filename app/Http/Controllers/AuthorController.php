@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\MyBooks;
 use App\Product;
 use App\Upload;
+use App\User;
 use App\Models\MyWritings;
 use App\Models\Followers;
 
@@ -20,6 +21,14 @@ class AuthorController extends Controller
 
     public function store_author(Request $request)
     {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $pin = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
+        $string = str_shuffle($pin);
+        $slug_final = $request->slug.'-'.$string;        
+
+
         $author = new Author;
         $author->author_name = $request->author_name;
         $author->author_description = $request->description;
@@ -31,7 +40,8 @@ class AuthorController extends Controller
         $author->status = 'Pending';
         $author->facebook_link = '';
         $author->twitter_link = '';
-        $author->slug = '883Drjjsel';
+        $author->slug = $slug_final;        
+
         $author->save();
         flash(translate('Author has been inserted successfully'))->success();
         return redirect()->route('dashboard');
@@ -39,6 +49,15 @@ class AuthorController extends Controller
 
     public function update_author(Request $request)
     {
+        
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $pin = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
+        $string = str_shuffle($pin);
+        $slug_final = $request->slug.'-'.$string;   
+
+        
         Author::where('id',$request->id)->update([
            'author_name' => $request->author_name,
            'author_description' => $request->description,
@@ -46,7 +65,9 @@ class AuthorController extends Controller
            'profile_picture' => $request->profile_image,
            'cover_photo' => $request->cover_photo,
            'contact_number' => $request->phone_number,
-           'email' => $request->email
+           'email' => $request->email,
+           'slug' => $slug_final
+
         ]);
         flash(translate('Author Settings Saved'))->success();
         return back();
@@ -248,7 +269,36 @@ class AuthorController extends Controller
 
         $my_writings = MyWritings::where('author_id', $id)->where('status', 'Approved')->orderBy('id', 'desc')->paginate(1);
 
-        return view('frontend.author_page', ['author' => $author, 'my_books' => $my_books, 'my_writings' => $my_writings]);
+        $followers = followers::where('author_id', $id)->orderBy('id', 'desc')->paginate(2);
+
+        return view('frontend.author_page', ['author' => $author, 'followers' => $followers, 'my_books' => $my_books, 'my_writings' => $my_writings]);
+    }
+
+    public function author_page_writing($id) {
+
+        $author = Author::where('id', $id)->first();
+
+        $my_books = MyBooks::where('author_id', $id)->orderBy('id', 'desc')->get();
+
+        $my_writings = MyWritings::where('author_id', $id)->where('status', 'Approved')->orderBy('id', 'desc')->paginate(1);
+
+        $followers = followers::where('author_id', $id)->orderBy('id', 'desc')->paginate(2);
+
+        return view('frontend.author_page_writing', ['author' => $author, 'followers' => $followers, 'my_books' => $my_books, 'my_writings' => $my_writings]);
+    }
+
+    public function author_page_follower($id) {
+
+        $author = Author::where('id', $id)->first();
+
+        $my_books = MyBooks::where('author_id', $id)->orderBy('id', 'desc')->get();
+
+        $my_writings = MyWritings::where('author_id', $id)->where('status', 'Approved')->orderBy('id', 'desc')->paginate(1);
+
+        $followers = followers::where('author_id', $id)->orderBy('id', 'desc')->paginate(2);
+
+
+        return view('frontend.author_page_follower', ['author' => $author, 'followers' => $followers, 'my_books' => $my_books, 'my_writings' => $my_writings]);
     }
 
     public function author_page_my_books($id) {
@@ -272,7 +322,7 @@ class AuthorController extends Controller
 
     public function favoriteHeart(Request $request) {
 
-        dd($request);
+        // dd($request);
         
         $author_id = $request->hid_id;
         $status = $request->favorite;

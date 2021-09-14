@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Author;
 use App\Models\MyBooks;
 use App\Models\MyWritings;
+use App\User;
 
 class AuthorBackendController extends Controller
 {
@@ -26,6 +27,42 @@ class AuthorBackendController extends Controller
         return view('backend.author.index',compact('authors','sort_search'));
     }
 
+    public function create(Request $request)
+    {
+        $users = User::orderBy('id','DESC')->get();        
+
+        return view('backend.author.create',compact('users'));
+    }
+
+    public function store(Request $request)
+    {
+        // dd($request);
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $pin = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
+        $string = str_shuffle($pin);
+        $slug_final = $request->slug.'-'.$string;      
+
+
+        $author = new Author;
+        $author->author_name = $request->name;
+        $author->author_description = $request->description;
+        $author->user_id = $request->user_id;
+        $author->profile_picture = $request->profile_picture;
+        $author->cover_photo = $request->cover_photo;
+        $author->email = $request->email;
+        $author->contact_number = $request->contact_number;
+        $author->status = 'Approved';
+        $author->facebook_link = $request->facebook_link;
+        $author->twitter_link = $request->twitter_link;
+        $author->slug = $slug_final;        
+
+        $author->save();
+        flash(translate('Author has been created successfully'))->success();
+        return redirect()->route('admin.author');
+    }
+
     public function edit($id)
     {
         $author = Author::find($id);
@@ -43,12 +80,20 @@ class AuthorBackendController extends Controller
         //     'title' => 'required|max:255',
         // ]);
 
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $pin = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
+        $string = str_shuffle($pin);
+        $slug_final = $request->slug.'-'.$string;  
+
         $add = Author::find($id);
 
         $add->author_name = $request->name;
         $add->author_description = $request->description;
         $add->slug = $request->slug;
         // $add->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->slug));
+        $add->slug = $slug_final;
         $add->contact_number = $request->contact_number;
         $add->email = $request->email; 
         $add->status = $request->status;

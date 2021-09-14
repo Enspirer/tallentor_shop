@@ -353,45 +353,21 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-sm-5 profile-name" style="padding-left: 3rem; padding-top: 1rem;">
+                                        <div class="col-sm-6 profile-name" style="padding-left: 3rem; padding-top: 1rem;">
                                             <h3 class="font-weight-bold mb-0">{{ \App\Models\Author::where('id',$author_id)->first()->author_name }}</h3>
                                         </div>
-                                        <div class="col-sm-5" style="padding: 1rem;">
-                                            <div class="row">
+                                        <div class="col-sm-4" style="padding: 1rem;">
+                                            <div class="row text-align-right">
 
-                                                <div class="col-5">
+                                                <div class="col-6">
                                                     @if(App\Models\Author::where('id',$author_id)->first())                                                   
                                                         <a class="btn shadow-lg bg-white" href="{{route('author_page', ['id'=>App\Models\Author::where('id',$author_id)->first()->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Author Profile') }}" style="border-radius: 0.8rem;">
                                                             Author Profile
                                                         </a>
                                                     @endif
                                                 </div>
-                                                <div class="col-5">
-                                                    <span class="btn shadow-lg bg-white" style="border-radius: 0.8rem; cursor:auto;">{{ count(App\Models\Followers::where('author_id',$author_id)->get()) }} Followers</span>
-                                                </div>
-                                                <div class="col-2">
-                                                    
-                                                        @if(App\Models\Followers::where('user_id',auth()->user()->id)->first() == null)
-                                                            <div class="small-heart">
-                                                                <form  action="{{ route('favorite_heart') }}" enctype="multipart/form-data" method="POST">
-                                                                {{csrf_field()}}
-                                                                    <input type="hidden" class="author_id" name='hid_id' value="{{ $author_id }}">
-                                                                    <input type="hidden" class="favorite" name='favorite' value="favorite">
-                                                                    <button class="bi bi-heart border-0 shadow-lg px-3 py-1" style="border-radius: 0.8rem; font-size: 1.5rem; color: #FF6243; background-color: white" type="submit"></button>
-                                                                </form>
-                                                            </div>
-                                                        @else
-                                                            <div class="small-heart">
-                                                                <form action="{{ route('favorite_heart') }}" enctype="multipart/form-data" method="POST">
-                                                                {{csrf_field()}}
-                                                                    <input type="hidden" class="author_id" name='hid_id' value="{{ $author_id }}">
-                                                                    <input type="hidden" class="favorite" name='favorite' value="non-favorite">
-                                                                    <button class="bi bi-heart-fill border-0 shadow-lg px-3 py-1" style="border-radius: 0.8rem; font-size: 1.5rem; color: #FF6243; background-color: white" type="submit"></button>
-                                                                </form>
-                                                            </div>
-                                                        @endif                                                           
-                                                        
-                                                   
+                                                <div class="col-6">
+                                                    <a class="btn shadow-lg bg-white" href="{{route('author_page_follower', ['id'=>App\Models\Author::where('id',$author_id)->first()->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" style="border-radius: 0.8rem;">{{ count(App\Models\Followers::where('author_id',$author_id)->get()) }} Followers</a>
                                                 </div>
                                         
                                             </div>

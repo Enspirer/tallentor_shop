@@ -2,6 +2,8 @@
 
 @section('panel_content')
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
     @if($author_details->status == 'Pending')
         <div class="row gutters-10 justify-content-center">
             <div class="col-md-12 mx-auto mb-3">
@@ -43,7 +45,8 @@
                                 <label>Your name <span class="text-danger">*</span></label>
                             </div>
                             <div class="col-md-10">
-                                <input type="text" class="form-control mb-3" value="{{$author_details->author_name}}" placeholder="Your name" name="author_name" required="">
+                                <input type="text" class="form-control mb-3" value="{{$author_details->author_name}}" placeholder="Your name" name="author_name" id="author_name" required="">
+                                <input type="hidden" class="form-control mb-3" value="{{$author_details->slug}}" name="slug" id="slug">
                             </div>
                         </div>
                         <div class="row">
@@ -135,6 +138,18 @@
             </div>
         </div>
     </div>
+
+<script>
+
+$("#author_name").keyup(function(){
+    var str = $(this).val();
+    var trims = $.trim(str)
+    var slug = trims.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
+    $("#slug").val(slug.toLowerCase()) 
+});    
+
+</script>
+
 @endsection
 
 

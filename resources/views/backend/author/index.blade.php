@@ -14,8 +14,18 @@
 <div class="card">
     <form class="" id="sort_products" action="" method="GET">
         <div class="card-header row gutters-5">
-            <div class="col">
-                <h5 class="mb-md-0 h6">{{ translate('Authors') }}</h5>
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="mt-2" style="font-size:14px;">{{ translate('Authors') }}</h6>
+                    </div>
+                    <div class="col-md-7">
+                        <a href="{{ route('author.create') }}" class="btn btn-circle btn-info">
+                            <span>{{translate('Add New Author')}}</span>
+                        </a>
+                    </div>
+                </div>
             </div>
             
             <!-- <div class="dropdown mb-2 mb-md-0">
@@ -27,7 +37,7 @@
                 </div>
             </div> -->
             
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <form class="" id="sort_categories" action="" method="GET">
                     <div class="box-inline pad-rgt pull-left">
                         <div class="" style="min-width: 200px;">

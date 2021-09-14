@@ -154,6 +154,9 @@ Route::get('/terms', 'HomeController@terms')->name('terms');
 Route::get('/privacypolicy', 'HomeController@privacypolicy')->name('privacypolicy');
 
 Route::get('/author-page/{id}','AuthorController@author_page')->name('author_page');
+Route::get('/author-page-writing/{id}','AuthorController@author_page_writing')->name('author_page_writing');
+Route::get('/author-page-follower/{id}','AuthorController@author_page_follower')->name('author_page_follower');
+
 
 Route::get('/publisher-page/{id}','CustomerProductController@publisher_page')->name('publisher_page');
 
@@ -366,6 +369,7 @@ Route::get('/mobile-page/{slug}', 'PageController@mobile_custom_page')->name('mo
 Route::get('/{slug}', 'PageController@show_custom_page')->name('custom-pages.show_custom_page');
 
 //Author Section
+Route::post('/author/store', 'AuthorBackendController@store')->name('author.store');
 Route::post('/author/update/{id}', 'AuthorBackendController@update')->name('author.update');
 Route::post('/author_request/update/{id}', 'AuthorRequestBackendController@update')->name('author_request.update');
 
