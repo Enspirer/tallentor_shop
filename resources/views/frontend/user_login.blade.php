@@ -1,117 +1,79 @@
 @extends('frontend.layouts.app')
 
+
+@push('after-styles')
+    <link rel="stylesheet" href="{{ url('assets/css/login.css') }}">
+@endpush
+    
 @section('content')
-    <section class="gry-bg py-5">
+    <section class="gry-bg">
         <div class="profile">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-8 mx-auto">
-                        <div class="card">
-                            <div class="text-center pt-4">
-                                <h1 class="h4 fw-600">
-                                    {{ translate('Login to your account.')}}
-                                </h1>
+            <div class="container-fluid banner">
+                <div class="container">
+                    <div class="row" style="padding-top: 7rem;">
+                        <div class="col-5">
+                            <h5 class="text-white text-center">{{ translate('Login to your account.')}}</h5>
+                            <form class="form-default" role="form" action="{{ route('login') }}" method="POST">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="email" class="form-label text-white mb-0 ml-3 form-label">Email</label>
+
+                                    @if (\App\Addon::where('unique_identifier', 'otp_system')->first() != null && \App\Addon::where('unique_identifier', 'otp_system')->first()->activated)
+                                        <input type="text" class="form-control text-white {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{ translate('Email Or Phone')}}" name="email" id="email">
+                                    @else
+                                        <input type="email" class="form-control text-white {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" name="email" id="email" aria-describedby="email">
+                                    @endif
+                                    
+                                    @if (\App\Addon::where('unique_identifier', 'otp_system')->first() != null && \App\Addon::where('unique_identifier', 'otp_system')->first()->activated)
+                                        <span class="opacity-60">{{  translate('Use country code before number') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="password" class="form-label text-white mb-0 ml-3 form-label">Password</label>
+                                    <input type="password" class="form-control text-white" id="password" name="password" aria-describedby="password">
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="radio" id="radio">
+                                            <label class="form-check-label text-white" for="flexRadioDefault1">Remember Me</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 text-right">
+                                        <a href="#" class="text-decoration-none text-white">Forgot Password?</a>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <button type="submit" class="btn login-btn w-100">Login</button>
+                                </div>
+                            </form>
+
+                            <div class="row align-items-center mt-3">
+                                <div class="col-5 pr-0">
+                                    <hr class="m-0">
+                                </div>
+                                <div class="col-2 text-center">
+                                    <p class="text-white mb-0">or</p>
+                                </div>
+                                <div class="col-5 pl-0">
+                                    <hr class="m-0">
+                                </div>
                             </div>
 
-                            <div class="px-4 py-3 py-lg-4">
-                                <div class="">
-                                    <form class="form-default" role="form" action="{{ route('login') }}" method="POST">
-                                        @csrf
-                                        <div class="form-group">
-                                            @if (\App\Addon::where('unique_identifier', 'otp_system')->first() != null && \App\Addon::where('unique_identifier', 'otp_system')->first()->activated)
-                                                <input type="text" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{ translate('Email Or Phone')}}" name="email" id="email">
-                                            @else
-                                                <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Email') }}" name="email">
-                                            @endif
-                                            @if (\App\Addon::where('unique_identifier', 'otp_system')->first() != null && \App\Addon::where('unique_identifier', 'otp_system')->first()->activated)
-                                                <span class="opacity-60">{{  translate('Use country code before number') }}</span>
-                                            @endif
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ translate('Password')}}" name="password" id="password">
-                                        </div>
-
-                                        <div class="row mb-2">
-                                            <div class="col-6">
-                                                <label class="aiz-checkbox">
-                                                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                    <span class=opacity-60>{{  translate('Remember Me') }}</span>
-                                                    <span class="aiz-square-check"></span>
-                                                </label>
-                                            </div>
-                                            <div class="col-6 text-right">
-                                                <a href="{{ route('password.request') }}" class="text-reset opacity-60 fs-14">{{ translate('Forgot password?')}}</a>
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-5">
-                                            <button type="submit" class="btn btn-primary btn-block fw-600">{{  translate('Login') }}</button>
-                                        </div>
-                                    </form>
-
-                                    @if (env("DEMO_MODE") == "On")
-                                        <div class="mb-5">
-                                            <table class="table table-bordered mb-0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>{{ translate('Seller Account')}}</td>
-                                                        <td>
-                                                            <button class="btn btn-info btn-sm" onclick="autoFillSeller()">{{ translate('Copy credentials') }}</button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>{{ translate('Customer Account')}}</td>
-                                                        <td>
-                                                            <button class="btn btn-info btn-sm" onclick="autoFillCustomer()">{{ translate('Copy credentials') }}</button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>{{ translate('Delivery Boy Account')}}</td>
-                                                        <td>
-                                                            <button class="btn btn-info btn-sm" onclick="autoFillDeliveryBoy()">{{ translate('Copy credentials') }}</button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    @endif
-
-                                    @if(get_setting('google_login') == 1 || get_setting('facebook_login') == 1 || get_setting('twitter_login') == 1)
-                                        <div class="separator mb-3">
-                                            <span class="bg-white px-3 opacity-60">{{ translate('Or Login With')}}</span>
-                                        </div>
-                                        <ul class="list-inline social colored text-center mb-5">
-                                            @if (get_setting('facebook_login') == 1)
-                                                <li class="list-inline-item">
-                                                    <a href="{{ route('social.login', ['provider' => 'facebook']) }}" class="facebook">
-                                                        <i class="lab la-facebook-f"></i>
-                                                    </a>
-                                                </li>
-                                            @endif
-                                            @if(get_setting('google_login') == 1)
-                                                <li class="list-inline-item">
-                                                    <a href="{{ route('social.login', ['provider' => 'google']) }}" class="google">
-                                                        <i class="lab la-google"></i>
-                                                    </a>
-                                                </li>
-                                            @endif
-                                            @if (get_setting('twitter_login') == 1)
-                                                <li class="list-inline-item">
-                                                    <a href="{{ route('social.login', ['provider' => 'twitter']) }}" class="twitter">
-                                                        <i class="lab la-twitter"></i>
-                                                    </a>
-                                                </li>
-                                            @endif
-                                        </ul>
-                                    @endif
+                            <div class="row justify-content-center mt-3">
+                                <div class="col-6 text-center ">
+                                    <p class="text-white mb-1" style="font-size: 0.8rem;">Don't have an account?</p>
+                                    <a href="#" class="text-decoration-none text-white">Register Now</a>
                                 </div>
-                                <div class="text-center">
-                                    <p class="text-muted mb-0">{{ translate('Dont have an account?')}}</p>
-                                    <a href="{{ route('user.registration') }}">{{ translate('Register Now')}}</a>
-                                </div>
+                                
                             </div>
                         </div>
+
+                        
                     </div>
                 </div>
             </div>
@@ -133,5 +95,25 @@
             $('#email').val('deliveryboy@example.com');
             $('#password').val('123456');
         }
+    </script>
+
+    <script>
+        $('#email').focus(function() {
+            $(this).siblings('label').addClass('click-input');
+        });
+        $('#email').focusout(function() {
+            if($(this).val() == '' ) {
+                $(this).siblings('label').removeClass('click-input');
+            }
+        });
+
+        $('#password').focus(function() {
+            $(this).siblings('label').addClass('click-input');
+        });
+        $('#password').focusout(function() {
+            if($(this).val() == '' ) {
+                $(this).siblings('label').removeClass('click-input');
+            }
+        });
     </script>
 @endsection
