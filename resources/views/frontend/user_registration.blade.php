@@ -86,34 +86,27 @@
                                             <button type="submit" class="btn btn-primary btn-block fw-600">{{  translate('Create Account') }}</button>
                                         </div>
                                     </form>
-                                    @if(get_setting('google_login') == 1 || get_setting('facebook_login') == 1 || get_setting('twitter_login') == 1)
+
                                         <div class="separator mb-3">
                                             <span class="bg-white px-3 opacity-60">{{ translate('Or Join With')}}</span>
                                         </div>
                                         <ul class="list-inline social colored text-center mb-5">
-                                            @if (get_setting('facebook_login') == 1)
                                                 <li class="list-inline-item">
                                                     <a href="{{ route('social.login', ['provider' => 'facebook']) }}" class="facebook">
                                                         <i class="lab la-facebook-f"></i>
                                                     </a>
                                                 </li>
-                                            @endif
-                                            @if(get_setting('google_login') == 1)
                                                 <li class="list-inline-item">
                                                     <a href="{{ route('social.login', ['provider' => 'google']) }}" class="google">
                                                         <i class="lab la-google"></i>
                                                     </a>
                                                 </li>
-                                            @endif
-                                            @if (get_setting('twitter_login') == 1)
                                                 <li class="list-inline-item">
                                                     <a href="{{ route('social.login', ['provider' => 'twitter']) }}" class="twitter">
                                                         <i class="lab la-twitter"></i>
                                                     </a>
                                                 </li>
-                                            @endif
                                         </ul>
-                                    @endif
                                 </div>
                                 <div class="text-center">
                                     <p class="text-muted mb-0">{{ translate('Already have an account?')}}</p>
