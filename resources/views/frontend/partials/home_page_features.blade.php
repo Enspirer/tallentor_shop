@@ -90,6 +90,8 @@
                                             {{ translate('Visit the Book Fair') }}
                                         </h2>
                                         <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
+                                        
+                                        <a href="{{ route('book_fair') }}" class="btn btn-primary">Click Here</a>
                                     </div>
                                 </div>
                             </figcaption>
@@ -110,6 +112,8 @@
                                             {{ translate('Pre Loved Book') }}
                                         </h2>
                                         <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
+                                        
+                                        <a href="{{ route('pre_loved_book') }}" class="btn btn-primary">Click Here</a>
                                     </div>
                                 </div>
                             </figcaption>
@@ -130,6 +134,8 @@
                                             {{ translate('Gift Cards') }}
                                         </h2>
                                         <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
+                                    
+                                        <a href="{{ route('gift_cards') }}" class="btn btn-primary">Click Here</a>
                                     </div>
                                 </div>
                             </figcaption>

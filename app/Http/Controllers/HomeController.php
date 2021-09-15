@@ -910,4 +910,30 @@ class HomeController extends Controller
 
         return view('frontend.shop_listing', compact('shops'));
     }
+
+
+
+    
+    public function book_fair(Request $request) {
+        dd($request);
+        $shops = Shop::whereIn('user_id', verified_sellers_id())->paginate(15);
+
+        return view('frontend.shop_listing', compact('shops'));
+    }
+
+    public function pre_loved_book(Request $request) {
+        dd($request);
+        $shops = Shop::whereIn('user_id', verified_sellers_id())->paginate(15);
+
+        return view('frontend.shop_listing', compact('shops'));
+    }
+
+    public function gift_cards(Request $request) {
+        dd($request);
+        $shops = Shop::whereIn('user_id', verified_sellers_id())->paginate(15);
+
+        return view('frontend.shop_listing', compact('shops'));
+    }
+
+
 }

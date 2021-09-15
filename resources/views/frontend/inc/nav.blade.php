@@ -1,3 +1,33 @@
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #F5F5F5;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+
+  left: 50% !important;
+  right: auto !important;
+  text-align: center !important;
+  transform: translate(-50%, 0) !important;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+
+
+
+
+
 @if(get_setting('topbar_banner') != null)
 <div class="position-relative top-banner removable-session z-1035 d-none" data-key="top-banner" data-value="removed">
     <a href="{{ get_setting('topbar_banner_link') }}" class="d-block text-reset">
@@ -66,6 +96,8 @@
                 </ul>
             </div>
 
+            
+
             <div class="col-5 text-right d-none d-lg-block">
                 <ul class="list-inline mb-0">
                     @auth
@@ -74,13 +106,29 @@
                                 <a href="{{ route('admin.dashboard') }}" class="text-reset py-2 d-inline-block opacity-60">{{ translate('My Panel')}}</a>
                             </li>
                         @else
+
+                            <li class="list-inline-item mr-3">
+                                <a href="{{ route('conversations.index') }}" class="text-reset py-2 d-inline-block opacity-60">{{ translate('Conversations')}}<span class="badge badge-primary badge-inline badge-pill ml-1">{{ count( App\Conversation::where('receiver_id', Auth::user()->id)->where('receiver_viewed', 0)->get() ) }}</span></a>
+                            </li>
                             <li class="list-inline-item mr-3">
                                 <a href="{{ route('author_followers.index') }}" class="text-reset py-2 d-inline-block opacity-60">{{ translate('Following Authors')}}<span class="badge badge-secondary badge-inline badge-pill ml-1">{{ count(App\Models\Followers::where('user_id',auth()->user()->id)->get()) }}</span></a>
                             </li>
 
-                            <li class="list-inline-item mr-3">
+                            <div class="dropdown mr-3">
+                                <span class="text-reset py-2 d-inline-block opacity-60">My Panel</span>
+                                <div class="dropdown-content text-left">
+                                    
+                                    <a href="{{ route('dashboard') }}" class="droptext text-reset py-2 d-inline-block opacity-60">{{ translate('Dashboard')}}</a>
+                                    <!-- <hr width="90px"> -->
+                                    <a href="{{ route('profile') }}" class="droptext text-reset py-2 d-inline-block opacity-60">{{ translate('Manage Profile')}}</a>
+                                    
+                                </div>
+                            </div>
+
+                            <!-- <li class="list-inline-item mr-3">
                                 <a href="{{ route('dashboard') }}" class="text-reset py-2 d-inline-block opacity-60">{{ translate('My Panel')}}</a>
-                            </li>
+                            </li> -->
+                            
                         @endif
                         <li class="list-inline-item">
                             <a href="{{ route('logout') }}" class="text-reset py-2 d-inline-block opacity-60">{{ translate('Logout')}}</a>
