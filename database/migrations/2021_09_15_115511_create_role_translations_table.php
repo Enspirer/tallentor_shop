@@ -15,7 +15,7 @@ class CreateRoleTranslationsTable extends Migration
     {
         Schema::create('role_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigIncrements('role_id');
+            $table->integer('role_id');
             $table->text('name');
             $table->text('lang');
             $table->timestamps();

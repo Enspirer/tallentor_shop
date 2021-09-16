@@ -15,7 +15,7 @@ class CreatePickupPointTranslationsTable extends Migration
     {
         Schema::create('pickup_point_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigIncrements('pickup_point_id');
+            $table->integer('pickup_point_id');
             $table->text('name');
             $table->text('address');
             $table->text('lang');

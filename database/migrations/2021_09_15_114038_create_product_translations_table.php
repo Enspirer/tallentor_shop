@@ -15,7 +15,7 @@ class CreateProductTranslationsTable extends Migration
     {
         Schema::create('product_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigIncrements('product_id');
+            $table->integer('product_id');
             $table->text('name')->nullable();
             $table->text('unit')->nullable();
             $table->text('description')->nullable();

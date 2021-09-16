@@ -17,6 +17,7 @@ class CreateBrandsTable extends Migration
             $table->bigIncrements('id');
             $table->text('name');
             $table->text('logo')->nullable();
+            $table->text('cover_photo')->nullable();
             $table->integer('top')->default(0);
             $table->text('slug')->nullable();
             $table->text('meta_title')->nullable();

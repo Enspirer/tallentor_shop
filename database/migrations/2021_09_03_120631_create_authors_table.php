@@ -19,6 +19,10 @@ class CreateAuthorsTable extends Migration
             $table->text('author_description')->nullable();
             $table->text('user_id')->nullable();
             $table->text('profile_picture');
+            $table->text('cover_photo')->nullable();
+            $table->text('contact_number')->nullable();
+            $table->text('email')->nullable();
+            $table->text('status')->nullable();
             $table->text('slug');
             $table->text('facebook_link')->nullable();
             $table->text('twitter_link')->nullable();

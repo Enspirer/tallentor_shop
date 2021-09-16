@@ -15,7 +15,7 @@ class CreateSellersTable extends Migration
     {
         Schema::create('sellers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id ')->index();
+            $table->integer('user_id')->index();
             $table->integer('verification_status')->default(0);
             $table->text('verification_info')->nullable();
             $table->integer('cash_on_delivery_status')->default(0);
