@@ -104,22 +104,31 @@ class AuthorController extends Controller
     {    
         // dd($request);
 
-        $author_details = Author::where('user_id',auth()->user()->id)->first();
+        if($request->post == null){
+            flash(translate('Please Fill Post Section'))->warning();
+            return back();
+        }else{
 
-        $add = new MyWritings;
+            $author_details = Author::where('user_id',auth()->user()->id)->first();
 
-        $add->title = $request->title;
-        $add->post = $request->post;
-        $add->discount = $request->discount;       
-        $add->status = 'Pending';
-        $add->feature_image = $request->feature_image;
-        $add->author_id = $author_details->id;
-        $add->user_id = auth()->user()->id; 
+            $add = new MyWritings;
+    
+            $add->title = $request->title;
+            $add->post = $request->post;
+            $add->discount = $request->discount;       
+            $add->status = 'Pending';
+            $add->feature_image = $request->feature_image;
+            $add->author_id = $author_details->id;
+            $add->user_id = auth()->user()->id; 
+            
+            $add->save();
+    
+            flash(translate('Added Successfully'))->success();
+            return redirect()->route('author_writings');
+
+        }
+
         
-        $add->save();
-
-        flash(translate('Added Successfully'))->success();
-        return redirect()->route('author_writings');
     }
 
     public function writing_edit($id)
@@ -133,22 +142,28 @@ class AuthorController extends Controller
     {    
         // dd($request);
 
-        $author_details = Author::where('user_id',auth()->user()->id)->first();
+        if($request->post == null){
+            flash(translate('Please Fill Post Section'))->warning();
+            return back();
+        }else{
 
-        $update = MyWritings::find($id);
+            $author_details = Author::where('user_id',auth()->user()->id)->first();
 
-        $update->title = $request->title;
-        $update->post = $request->post;
-        $update->discount = $request->discount;       
-        $update->status = 'Pending';
-        $update->feature_image = $request->feature_image;
-        $update->author_id = $author_details->id;
-        $update->user_id = auth()->user()->id; 
-        
-        $update->save();
+            $update = MyWritings::find($id);
 
-        flash(translate('Updated Successfully'))->success();
-        return redirect()->route('author_writings');
+            $update->title = $request->title;
+            $update->post = $request->post;
+            $update->discount = $request->discount;       
+            $update->status = 'Pending';
+            $update->feature_image = $request->feature_image;
+            $update->author_id = $author_details->id;
+            $update->user_id = auth()->user()->id; 
+            
+            $update->save();
+
+            flash(translate('Updated Successfully'))->success();
+            return redirect()->route('author_writings');
+        }
     }
 
     public function writing_destroy($id)

@@ -18,7 +18,7 @@ class CreateMyWritingsTable extends Migration
             $table->text('user_id');
             $table->text('author_id');
             $table->text('title');
-            $table->text('post');
+            $table->text('post')->nullable();
             $table->text('status');
             $table->text('discount')->nullable();
             $table->text('feature_image')->nullable();

@@ -33,7 +33,7 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <form class="" action="{{route('user.author.update')}}" method="POST" enctype="multipart/form-data">
+                <form class="" action="{{route('user.author.update')}}" method="POST" enctype="multipart/form-data" name="myForm" onsubmit="return validateForm()">
                     {{csrf_field()}}
                     <div class="form-box-title px-3 py-2">
                         Author Information
@@ -79,7 +79,7 @@
                             <label class="col-md-2"
                                    for="signinSrEmail">{{translate('Profile Image')}}  <span class="text-danger">*</span></label>
                             <div class="col-md-10">
-                                <div class="input-group" data-toggle="aizuploader" data-type="image" data-multiple="true">
+                                <div class="input-group" data-toggle="aizuploader" data-type="image">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text bg-soft-secondary font-weight-medium">
                                             {{ translate('Browse')}}</div>
@@ -93,13 +93,11 @@
                         </div> <br>
 
 
-
-
                         <div class="row">
                             <label class="col-md-2"
                                    for="signinSrEmail">{{translate('Cover Image')}}</label>
                             <div class="col-md-10">
-                                <div class="input-group" data-toggle="aizuploader" data-type="image" data-multiple="true">
+                                <div class="input-group" data-toggle="aizuploader" data-type="image">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text bg-soft-secondary font-weight-medium">
                                             {{ translate('Browse')}}</div>
@@ -114,7 +112,7 @@
 
                         <div class="row">
                             <div class="col-md-2">
-                                <label>Facebook<span class="text-danger">*</span></label>
+                                <label>Facebook</label>
                             </div>
                             <div class="col-md-10">
                                 <input type="text" class="form-control mb-3" placeholder="Facebook Link" name="facebook_link" value="{{$author_details->facebook_link}}">
@@ -123,7 +121,7 @@
 
                         <div class="row">
                             <div class="col-md-2">
-                                <label>Twitter<span class="text-danger">*</span></label>
+                                <label>Twitter</label>
                             </div>
                             <div class="col-md-10">
                                 <input type="text" class="form-control mb-3" placeholder="Twitter Link" name="twitter_link" value="{{$author_details->twitter_link}}">
@@ -140,6 +138,16 @@
     </div>
 
 <script>
+function validateForm() {
+  let x = document.forms["myForm"]["profile_image"].value;
+  if (x == "") {
+    alert("Please Add Profile Image");
+    return false;
+  }
+}
+</script>
+
+<script>
 
 $("#author_name").keyup(function(){
     var str = $(this).val();
@@ -149,6 +157,8 @@ $("#author_name").keyup(function(){
 });    
 
 </script>
+
+
 
 @endsection
 

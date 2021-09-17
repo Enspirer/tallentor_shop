@@ -4,7 +4,7 @@
 
 <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
 
-<form id="add_form" class="form-horizontal" action="{{ route('author_writings_backend.update',$my_writings->id) }}" enctype="multipart/form-data" method="POST">
+<form id="add_form" class="form-horizontal" action="{{ route('author_writings_backend.update',$my_writings->id) }}" enctype="multipart/form-data" method="POST" name="myForm" onsubmit="return validateForm()">
 @csrf
     <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -28,7 +28,7 @@
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="col-md-9">
-                                <textarea name="post" id="editor" class="form-control" required> {{ $my_writings->post }} <br><br></textarea>
+                                <textarea name="post" id="editor" class="form-control"> {{ $my_writings->post }}</textarea>
                             </div>
                         </div>                       
                                                 
@@ -38,7 +38,7 @@
                                 <!-- <span class="text-danger">*</span> -->
                             </label>
                             <div class="col-md-9">
-                                <input type="text" placeholder="{{translate('Discount')}}" id="discount" value="{{ $my_writings->discount }}" name="discount" class="form-control" required>
+                                <input type="text" placeholder="{{translate('Discount')}}" id="discount" value="{{ $my_writings->discount }}" name="discount" class="form-control">
                             </div>
                         </div>  
 
@@ -99,6 +99,16 @@
         </div>
     </div>
 </form>
+
+<script>
+function validateForm() {
+  let x = document.forms["myForm"]["feature_image"].value;
+  if (x == "") {
+    alert("Please Add Feature Image");
+    return false;
+  }
+}
+</script>
 
 <script>
 	ClassicEditor

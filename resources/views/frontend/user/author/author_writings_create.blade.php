@@ -12,7 +12,7 @@
       </div>
     </div>
 
-<form id="add_form" class="form-horizontal" action="{{ route('author_writings.store') }}" enctype="multipart/form-data" method="POST">
+<form id="add_form" class="form-horizontal" action="{{ route('author_writings.store') }}" enctype="multipart/form-data" method="POST" name="myForm" onsubmit="return validateForm()">
 @csrf
     <div class="row">
         <div class="col-lg-12 mx-auto">
@@ -36,7 +36,7 @@
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="col-md-9">
-                                <textarea name="post" id="editor" class="form-control" required><br><br></textarea>
+                                <textarea name="post" id="editor" class="form-control"></textarea>
                             </div>
                         </div>                       
                                                 
@@ -46,7 +46,7 @@
                                 <!-- <span class="text-danger">*</span> -->
                             </label>
                             <div class="col-md-9">
-                                <input type="text" placeholder="{{translate('Discount')}}" id="discount" name="discount" class="form-control" required>
+                                <input type="text" placeholder="{{translate('Discount')}}" id="discount" name="discount" class="form-control">
                             </div>
                         </div>  
 
@@ -92,7 +92,17 @@
 		.catch( err => {
 			console.error( err.stack );
 		} );
-</script>   
+</script>  
+
+<script>
+function validateForm() {
+  let x = document.forms["myForm"]["feature_image"].value;
+  if (x == "") {
+    alert("Please Add Feature Image");
+    return false;
+  }
+}
+</script>
 
 @endsection
 

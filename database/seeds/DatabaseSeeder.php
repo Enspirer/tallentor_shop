@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(OauthClientsSeeder::class);
         $this->call(OauthPersonalAccessClientsSeeder::class);
         $this->call(SellerSeeder::class);
+        $this->call(AuthorsSeeder::class);
 
     }
 }

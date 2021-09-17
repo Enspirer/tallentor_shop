@@ -194,7 +194,7 @@
           </div>
       </div>
 
-      <div class="col-md-8" style="margin-top:-60px;">
+      <div class="col-md-8">
           <div class="card">
               <div class="card-header">
                   <h6 class="mb-0">{{ translate('My Writings') }}</h6>

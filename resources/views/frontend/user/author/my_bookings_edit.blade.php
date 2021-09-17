@@ -10,7 +10,7 @@
       </div>
     </div>
 
-<form id="add_form" class="form-horizontal" action="{{ route('my_books.update',$my_books->id) }}" enctype="multipart/form-data" method="POST">
+<form id="add_form" class="form-horizontal" action="{{ route('my_books.update',$my_books->id) }}" enctype="multipart/form-data" method="POST" name="myForm" onsubmit="return validateForm()">
 @csrf
     <div class="row">
         <div class="col-lg-12 mx-auto">
@@ -93,7 +93,15 @@
     </div>
 </form>
 
-    
+<script>
+function validateForm() {
+  let x = document.forms["myForm"]["book_image"].value;
+  if (x == "") {
+    alert("Please Add Book Image");
+    return false;
+  }
+}
+</script>
 
 @endsection
 

@@ -147,21 +147,28 @@ class AuthorBackendController extends Controller
     {    
         // dd($request);
 
-        $my_writings = MyWritings::where('id',$id)->first();
+        if($request->post == null){
+            flash(translate('Please Fill Post Section'))->warning();
+            return back();
+        }else{
 
-        $author_id = Author::where('id',$my_writings->author_id)->first();
+            $my_writings = MyWritings::where('id',$id)->first();
 
-        $update = MyWritings::find($id);
+            $author_id = Author::where('id',$my_writings->author_id)->first();
 
-        $update->title = $request->title;
-        $update->post = $request->post;
-        $update->discount = $request->discount; 
-        $update->feature_image = $request->feature_image;
-        $update->status = $request->status;
-        $update->save();
+            $update = MyWritings::find($id);
 
-        flash(translate('Updated Successfully'))->success();
-        return redirect()->route('admin.author_writings_backend',$author_id->id);
+            $update->title = $request->title;
+            $update->post = $request->post;
+            $update->discount = $request->discount; 
+            $update->feature_image = $request->feature_image;
+            $update->status = $request->status;
+            $update->save();
+
+            flash(translate('Updated Successfully'))->success();
+            return redirect()->route('admin.author_writings_backend',$author_id->id);
+
+        }
     }
 
     public function writing_destroy($id)
