@@ -146,6 +146,7 @@ Route::resource('subscribers', 'SubscriberController');
 Route::get('/brands', 'HomeController@all_brands')->name('brands.all');
 Route::get('/categories', 'HomeController@all_categories')->name('categories.all');
 Route::get('/sellers', 'HomeController@all_seller')->name('sellers');
+Route::get('/book_finder', 'HomeController@book_finder')->name('book_finder');
 Route::get('/book_fair', 'HomeController@book_fair')->name('book_fair');
 Route::get('/pre_loved_book', 'HomeController@pre_loved_book')->name('pre_loved_book');
 Route::get('/gift_cards', 'HomeController@gift_cards')->name('gift_cards');

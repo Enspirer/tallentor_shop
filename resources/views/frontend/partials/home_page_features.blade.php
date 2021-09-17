@@ -63,9 +63,7 @@
                                         <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
                                         
                                         @auth
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                                                Click Here
-                                            </button>
+                                            <a href="{{ route('book_finder') }}" type="button" class="btn btn-primary">{{ translate('Click Here')}}</a>  
                                         @else
                                             <a href="{{ route('user.login') }}" type="button" class="btn btn-primary">{{ translate('Click Here')}}</a>                                                
                                         @endauth
@@ -191,7 +189,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
         <form action="{{ route('book_finder_request.store') }}" method="post">
@@ -250,5 +248,5 @@
         </form>  
     </div>
   </div>
-</div>
+</div> -->
    

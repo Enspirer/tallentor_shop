@@ -912,7 +912,12 @@ class HomeController extends Controller
     }
 
 
+    public function book_finder(Request $request) {
+        // dd($request);
+        
 
+        return view('frontend.book_finder');
+    }
     
     public function book_fair(Request $request) {
         dd($request);
